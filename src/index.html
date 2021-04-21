@@ -8,7 +8,22 @@
     <main>
       <section>
         <button>Book A Trip</button>
-        <article class="hidden"></article>
+        <article class="hidden">
+          <h1>Book A New Trip</h1>
+          <form></form>
+            <label for="destination">Choose a destination</label>
+            <select id="destination" name="destination" required>
+              <!-- <option value="Bali">Bali</option> -->
+            </select>
+            <label for="date">Starting Date</label>
+            <input type="text" placeholder="YYYY/MM/DD" id="date" required>
+            <label for="duration">Trip Duration(days)</label>
+            <input type="number" id="duration" required>
+            <label for="travelers">Number of Travelers</label>
+            <input type="number" id="travelers" required>
+            <input type="submit" value="Request Booking">
+          </form>
+        </article>
         <h3>Total Trip Cost This Year</h3>
       </section>
       <section>
