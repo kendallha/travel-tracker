@@ -9,8 +9,8 @@ describe('Destination', function() {
   let destination;
 
   beforeEach(function() {
-    destinations = destinationData.destinations;
-    destination = new Destination(destinations[0]);
+    destinations = destinationData;
+    destination = new Destination(destinations.destinations[0]);
   })
 
   it('should be a function', function() {
