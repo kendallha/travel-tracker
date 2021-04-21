@@ -2,10 +2,11 @@ import chai from 'chai';
 const expect = chai.expect;
 
 import Destination from '../src/destination';
-import destinationData from '/destination-test-data';
+import destinationData from './destination-test-data';
 
 describe('Destination', function() {
   let destinations;
+  let destination;
 
   beforeEach(function() {
     destinations = destinationData.destinations;
@@ -13,7 +14,7 @@ describe('Destination', function() {
   })
 
   it('should be a function', function() {
-    expect(Destination).to.be.a.apply('function');
+    expect(Destination).to.be.a('function');
   });
 
   it('should be an instance of Destination', function() {
