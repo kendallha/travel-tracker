@@ -11,10 +11,10 @@ class TripRepository {
     return this.trips.filter(trip => trip.status === "pending");
   }
 
-  getAllTripsByUser() {
+  getAllTripsByUser(userID) {
     return this.trips.filter(trip => trip.userID === userID);
   }
-  
+
   getPendingTripsByUser(userID) {
     return this.trips.filter(trip => trip.status === "pending" && trip.userID === userID);
   }
@@ -32,7 +32,8 @@ class TripRepository {
   }
 
   getYearlyRevenue(date) {
-    const tripsThisYear =  this.trips.filter(trip => dayjs(trip.date).isSame(dayjs(date), 'year'));
+    const tripsThisYear =  this.trips.filter(trip => dayjs(trip.date).isSame(dayjs(date), 'year') && trip.status === "approved");
+    
     return Math.round(tripsThisYear.reduce((acc, trip) => acc + trip.getTripRevenue(),0));
   }
 

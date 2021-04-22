@@ -146,7 +146,7 @@ describe('TripRepository', function() {
   });
 
   it('should be able to get the trip revenue from the current year', function() {
-    expect(trips.getYearlyRevenue(date)).to.equal(1303);
+    expect(trips.getYearlyRevenue(date)).to.equal(733);
   })
 
 })
