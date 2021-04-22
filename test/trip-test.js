@@ -3,14 +3,21 @@ const expect = chai.expect;
 
 import Trip from '../src/trip';
 import tripData from '../data/trip-test-data';
+import DestinationRepo from '../src/destination-repo';
+import Destination from '../src/destination';
+import destinationData from '../data/destination-test-data';
 
-describe('Destination', function() {
+describe('Trip', function() {
   let trip;
   let tripInfo;
+  let destinationInfo;
+  let destinations;
 
   beforeEach(function() {
-    destinationInfo = tripData;
-    trip = new Trip(tripInfo.trips[0]);
+    tripInfo = tripData;
+    destinationInfo = destinationData;
+    destinations = new DestinationRepo(destinationInfo.destinations);
+    trip = new Trip(tripInfo.trips[0], destinations.destinations);
   })
 
   it('should be a function', function() {
