@@ -1,7 +1,10 @@
+import dayjs from 'dayjs'
+dayjs().format()
+
 class Trip {
   constructor(trip, destinations) {
     this.id = trip.id;
-    this.user = trip.userID;
+    this.userID = trip.userID;
     this.destination = destinations.find(destination => destination.id === trip.destinationID)
     this.travelers = trip.travelers;
     this.date = trip.date;
@@ -12,7 +15,12 @@ class Trip {
 
   getTripCost() {
     const totalCost = (this.destination.dailyLodgingCost * this.duration) +   (this.destination.flightCostPerPerson * this.travelers);
-    return totalCost + (totalCost * .1);
+    return Math.round(totalCost + (totalCost * .1));
+  }
+
+  getTripRevenue() {
+    const totalCost = (this.destination.dailyLodgingCost * this.duration) +   (this.destination.flightCostPerPerson * this.travelers);
+    return totalCost * .1;
   }
 }
 

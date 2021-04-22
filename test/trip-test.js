@@ -33,7 +33,7 @@ describe('Trip', function() {
   });
 
   it('should contain the id of the user who booked it', function() {
-    expect(trip.user).to.equal(44);
+    expect(trip.userID).to.equal(44);
   });
 
   it('should contain an instantiated Destination', function() {
@@ -61,7 +61,11 @@ describe('Trip', function() {
   });
 
   it('should be able to calculate the estimated cost of a trip', function() {
-    expect(trip.getTripCost()).to.equal(2189)
+    expect(trip.getTripCost()).to.equal(2189);
+  });
+
+  it('should be able to calculate the agency revenue for a trip', function() {
+    expect(trip.getTripRevenue()).to.equal(199);
   })
 
 })
