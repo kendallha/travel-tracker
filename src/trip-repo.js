@@ -11,6 +11,10 @@ class TripRepository {
     return this.trips.filter(trip => trip.status === "pending");
   }
 
+  getAllTripsByUser() {
+    return this.trips.filter(trip => trip.userID === userID);
+  }
+  
   getPendingTripsByUser(userID) {
     return this.trips.filter(trip => trip.status === "pending" && trip.userID === userID);
   }
