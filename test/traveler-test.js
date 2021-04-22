@@ -1,7 +1,6 @@
 import chai from 'chai';
 const expect = chai.expect;
 
-import Trip from '../src/trip';
 import tripData from '../data/trip-test-data';
 import TripRepository from '../src/trip-repo';
 import Traveler from '../src/traveler';
@@ -16,13 +15,11 @@ describe('Traveler', function() {
   let travelerInfo = travelerData;
   let destinationInfo;
   let destinations;
-  // let userID;
 
   beforeEach(function() {
     tripInfo = tripData;
     destinationInfo = destinationData;
     travelerInfo = travelerData.travelers[2];
-    // userID = 3;
     destinations = new DestinationRepo(destinationInfo.destinations);
     trips = new TripRepository(tripInfo.trips, destinations.destinations);
     traveler = new Traveler(travelerInfo, trips);
