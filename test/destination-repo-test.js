@@ -3,7 +3,7 @@ const expect = chai.expect;
 
 import Destination from '../src/destination';
 import DestinationRepo from '../src/destination-repo';
-import destinationData from './destination-test-data';
+import destinationData from '../data/destination-test-data';
 
 describe('DestinationRepo', function() {
   let destinations;
