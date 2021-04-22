@@ -1,5 +1,3 @@
-import Destination from "./destination";
-
 class Trip {
   constructor(trip, destinations) {
     this.id = trip.id;
@@ -10,7 +8,6 @@ class Trip {
     this.duration = trip.duration;
     this.status = trip.status;
     this.suggestedActivities = trip.suggestedActivities;
-
   }
 
   getTripCost() {

@@ -14,9 +14,9 @@ let tripData =
     {
       "id": 2,
       "userID": 35,
-      "destinationID": 25,
+      "destinationID": 2,
       "travelers": 5,
-      "date": "2020/10/04",
+      "date": "2021/10/04",
       "duration": 18,
       "status": "pending",
       "suggestedActivities": []
@@ -24,7 +24,7 @@ let tripData =
       {
       "id": 3,
       "userID": 3,
-      "destinationID": 22,
+      "destinationID": 3,
       "travelers": 4,
       "date": "2020/05/22",
       "duration": 17,
@@ -34,7 +34,7 @@ let tripData =
     {
       "id": 4,
       "userID": 43,
-      "destinationID": 14,
+      "destinationID": 4,
       "travelers": 2,
       "date": "2020/02/25",
       "duration": 10,
@@ -43,11 +43,31 @@ let tripData =
     },
     {
       "id": 5,
-      "userID": 42,
-      "destinationID": 29,
+      "userID": 43,
+      "destinationID": 2,
       "travelers": 3,
       "date": "2020/04/30",
       "duration": 18,
+      "status": "approved",
+      "suggestedActivities": []
+    },
+    {
+      "id": 3,
+      "userID": 3,
+      "destinationID": 2,
+      "travelers": 4,
+      "date": "2021/10/22",
+      "duration": 17,
+      "status": "approved",
+      "suggestedActivities": []
+    },
+    {
+      "id": 3,
+      "userID": 3,
+      "destinationID": 4,
+      "travelers": 4,
+      "date": "2021/05/22",
+      "duration": 17,
       "status": "approved",
       "suggestedActivities": []
     }
