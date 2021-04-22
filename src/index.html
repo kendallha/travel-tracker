@@ -2,15 +2,22 @@
 <html lang="en-US">
   <head>
     <title>Travel Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Questrial&display=swap');
+    </style>
   </head>
   <body>
-    <header>
+    <header class="header">
       <h1>Welcome</h1>
       <h2>Date</h2>
+      <h3>User</h3>
     </header>
     <main id="user-view" class="main">
-      <section>
+      <section class="overview">
+        <div>
         <button>Book A Trip</button>
+      </div>
         <article class="hidden">
           <h1>Book A New Trip</h1>
           <form>
@@ -27,18 +34,24 @@
             <input type="submit" value="Request Booking" required>
           </form>
         </article>
-        <h3>Total Trip Cost This Year</h3>
+        <h3>Trip Cost This Year</h3>
       </section>
-      <section>
-        <article>
+      <section class="trips">
+        <div class="trip list">
+        <article class="short-trip-list">
           <h1>Upcoming Trips</h1>
           <ul></ul>
         </article>
-        <article>
+        <article class="short-trip-list">
+          <h1>Upcoming Trips</h1>
+          <ul></ul>
+        </article>
+        </section>div>
+        <article class="trip-list">
           <h1>Trips Pending Approval</h1>
           <ul></ul>
         </article>
-        <article>
+        <article class="trip-list">
           <h1>Past Trips</h1>
           <ul></ul>
         </article>

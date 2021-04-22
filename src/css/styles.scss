@@ -1,0 +1,62 @@
+@import 'normalize.css';
+@import '_variables.scss';
+@import '_mixins.scss';
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  display: grid;
+  grid-template-rows: 15% 85%;
+  grid-template-areas:
+    "header"
+    "main";
+    background-color: #FF6E6E;
+  font-family: $primary-font;
+  color: $primary-font-color;
+}
+
+.header {
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #FFC89A;
+  font-size: 1em;
+}
+
+.main {
+  grid-area: main;
+  display: grid;
+  grid-template-rows: 20% 80%;
+  grid-template-areas:
+    "overview"
+    "trips";
+}
+
+.overview {
+  grid-area: overview;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.trips {
+  grid-area: trips;
+  background: grey;
+}
+
+.trip-list {
+  display: grid;
+  
+}
+
+.hidden {
+  display: none;
+}
+
+
+@import '_media-queries.scss';
