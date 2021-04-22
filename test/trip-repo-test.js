@@ -145,8 +145,68 @@ describe('TripRepository', function() {
     }])
   });
 
+  it('should be able to get a user\'s current trips', function() {
+    expect(trips.getCurrentTripsByUser(44, "2019/09/20")).to.deep.equal([{
+      "id": 1,
+      "userID": 44,
+      "destination": {
+        "id": 3,
+        "destination": "Sydney, Austrailia",
+        "dailyLodgingCost": 130,
+        "flightCostPerPerson": 950,
+        "image": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+        "alt": "opera house and city buildings on the water with boats"
+        },
+      "travelers": 1,
+      "date": "2019/09/16",
+      "duration": 8,
+      "status": "approved",
+      "suggestedActivities": ["snorkeling", "hot springs", "museums"]
+    }])
+  });
+
+  it('should be able to get all current trips', function() {
+    expect(trips.getAllCurrentTrips("2019/09/20")).to.deep.equal([{
+      "id": 1,
+      "userID": 44,
+      "destination": {
+        "id": 3,
+        "destination": "Sydney, Austrailia",
+        "dailyLodgingCost": 130,
+        "flightCostPerPerson": 950,
+        "image": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+        "alt": "opera house and city buildings on the water with boats"
+        },
+      "travelers": 1,
+      "date": "2019/09/16",
+      "duration": 8,
+      "status": "approved",
+      "suggestedActivities": ["snorkeling", "hot springs", "museums"]
+    }])
+  });
+
+  it('should be able to get all trips for a given user', function() {
+    expect(trips.getAllTripsByUser(44)).to.deep.equal([{
+      "id": 1,
+      "userID": 44,
+      "destination": {
+        "id": 3,
+        "destination": "Sydney, Austrailia",
+        "dailyLodgingCost": 130,
+        "flightCostPerPerson": 950,
+        "image": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+        "alt": "opera house and city buildings on the water with boats"
+        },
+      "travelers": 1,
+      "date": "2019/09/16",
+      "duration": 8,
+      "status": "approved",
+      "suggestedActivities": ["snorkeling", "hot springs", "museums"]
+    }])
+  });
+
   it('should be able to get the trip revenue from the current year', function() {
-    expect(trips.getYearlyRevenue(date)).to.equal(1303);
+    expect(trips.getYearlyRevenue(date)).to.equal(733);
   })
 
 })
