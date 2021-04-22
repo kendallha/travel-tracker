@@ -1,0 +1,32 @@
+@media screen and (min-width: 750px) {
+  .top-row {
+    margin-top: 10%;
+  }
+
+  .overview {
+    flex-direction: row;
+    align-items: flex-start;
+    font-size: 2em;
+    padding-top: 2%;
+  }
+
+  .trips {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    column-gap: 3%;
+    height: 100%;
+  }
+
+  .trip-list {
+    height: 90%;
+    width: 100%;
+    justify-content: flex-start;
+    font-size: 1em;
+    
+  }
+  .current-upcoming {
+    display: grid;
+    grid-template-rows: 45% 45%;
+    row-gap: 4%;
+  }
+}
