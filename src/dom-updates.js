@@ -24,7 +24,11 @@ let domUpdates = {
 
   displayCostThisYear(amount, element) {
     element.innerText = `Trip Costs This Year: $ ${amount}`
-  }
+  },
+
+  showBookingForm(element) {
+    element.classList.toggle("hidden");
+  },
 }
 
 export default domUpdates;

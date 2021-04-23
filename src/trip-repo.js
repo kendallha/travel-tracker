@@ -22,7 +22,7 @@ class TripRepository {
   }
 
   getUpcomingTripsByUser(userID, date) {
-    return this.trips.filter(trip => (dayjs(date).isBefore(dayjs(trip.date)) && trip.userID === userID));
+    return this.trips.filter(trip => (dayjs(date).isBefore(dayjs(trip.date)) && trip.userID === userID) && trip.status === "approved");
   }
 
   getCurrentTripsByUser(userID, date) {

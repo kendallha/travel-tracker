@@ -17,6 +17,8 @@ let dateDisplay = document.querySelector("#date");
 let username = document.querySelector("#username");
 let greeting = document.querySelector("#greeting");
 let bookingButton = document.querySelector("#bookingButton");
+let bookingForm = document.querySelector("#bookingForm");
+let exitButton = document.querySelector("#exitButton");
 let pendingTripsList = document.querySelector("#pendingTrips");
 let pastTripsList = document.querySelector("#pastTrips");
 let currentTripsList = document.querySelector("#currentTrips");
@@ -26,8 +28,11 @@ let tripCostTotal = document.querySelector("#tripCostTotal");
 
 window.addEventListener("load", fetchAPIData);
 bookingButton.addEventListener("click", () => {
-  console.log("click");
-})
+  domUpdates.showBookingForm(bookingForm);
+});
+exitButton.addEventListener("click", () => {
+  domUpdates.showBookingForm(bookingForm);
+});
 
 function fetchAPIData() {
   const travelerPromise = fetch(`http://localhost:3001/api/v1/travelers/${userIdInput}`)
@@ -50,8 +55,7 @@ function fetchAPIData() {
 function prepareDOM([travelerData, tripData, destinationData]) {
   destinations = new DestinationRepository(destinationData.destinations);
   trips = new TripRepository(tripData.trips, destinations.destinations);
-  getNewTraveler(travelerData, trips);
-  populateDOM();
+  populateDOM(travelerData);
 }
 
 function getNewTraveler(travelerInfo, tripRepository) {
@@ -61,8 +65,15 @@ function getNewTraveler(travelerInfo, tripRepository) {
   domUpdates.showUserName(traveler.name, username);
 }
 
-function populateDOM() {
+function populateDOM(travelerData) {
   domUpdates.displayDate(date, dateDisplay);
+  //if statement using login
+  getUserView(travelerData);
+  // else statement with alternative agent page view
+}
+
+function getUserView(travelerData) {
+  getNewTraveler(travelerData, trips);
   retrieveTrips();
   getTripSpending();
 }
