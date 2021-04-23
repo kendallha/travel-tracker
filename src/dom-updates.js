@@ -20,6 +20,10 @@ let domUpdates = {
     element.innerHTML += `
     <li>${trip.destination.destination}: ${trip.date}
     `
+  },
+
+  displayCostThisYear(amount, element) {
+    element.innerText = `Trip Costs This Year: $ ${amount}`
   }
 }
 

@@ -6,11 +6,12 @@ import TripRepository from './trip-repo';
 import dayjs from 'dayjs';
 dayjs().format();
 
-let date = dayjs("12/11/2020").format('MM/DD/YYYY');
+let date = dayjs("12/11/2019").format('MM/DD/YYYY');
+// let date = "2020/12/11";
 let traveler;
 let trips;
 let destinations;
-let userIdInput = 1;
+let userIdInput = 2;
 
 let dateDisplay = document.querySelector("#date");
 let username = document.querySelector("#username");
@@ -18,6 +19,9 @@ let greeting = document.querySelector("#greeting");
 let bookingButton = document.querySelector("#bookingButton");
 let pendingTripsList = document.querySelector("#pendingTrips");
 let pastTripsList = document.querySelector("#pastTrips");
+let currentTripsList = document.querySelector("#currentTrips");
+let upcomingTripsList = document.querySelector("#upcomingTrips");
+let tripCostTotal = document.querySelector("#tripCostTotal");
 
 
 window.addEventListener("load", fetchAPIData);
@@ -59,8 +63,15 @@ function getNewTraveler(travelerInfo, tripRepository) {
 
 function populateDOM() {
   domUpdates.displayDate(date, dateDisplay);
+  retrieveTrips();
+  getTripSpending();
+}
+
+function retrieveTrips() {
   retrievePendingTrips();
   retrievePastTrips();
+  retrieveCurrentTrips();
+  retrieveUpcomingTrips();
 }
 
 function retrievePendingTrips() {
@@ -69,10 +80,27 @@ function retrievePendingTrips() {
 }
 
 function retrievePastTrips() {
-  const pastTrips = trips.getPastTripsByUser(traveler.id);
+  const pastTrips = trips.getPastTripsByUser(traveler.id, date);
   showTrips(pastTrips, pastTripsList);
 }
 
-function showTrips(selectedTrips, element) {
-  selectedTrips.forEach(trip => domUpdates.displayTrips(trip, element))
+function retrieveCurrentTrips() {
+  const currentTrips = trips.getCurrentTripsByUser(traveler.id, date);
+  showTrips(currentTrips, currentTripsList);
 }
+
+function retrieveUpcomingTrips() {
+  const upcomingTrips = trips.getUpcomingTripsByUser(traveler.id, date);
+  showTrips(upcomingTrips, upcomingTripsList);
+}
+
+function showTrips(selectedTrips, element) {
+  domUpdates.clearTrips(element);
+  selectedTrips.forEach(trip => domUpdates.displayTrips(trip, element));
+}
+
+function getTripSpending() {
+  const spending = traveler.getTotalCostThisYear(date);
+  domUpdates.displayCostThisYear(spending, tripCostTotal);
+}
+
