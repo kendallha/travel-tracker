@@ -21,21 +21,22 @@
 
   .trips {
     display: grid;
-    grid-template-columns: 30% 30% 30%;
+    grid-template-columns: repeat(3, 30%);
     column-gap: 3%;
     height: 100%;
   }
 
   .trip-list {
-    height: 90%;
-    width: 100%;
+    // height: 90%;
+    // width: 100%;
+    @include set-size(100%, 90%);
     justify-content: flex-start;
     font-size: 1em;
     
   }
   .current-upcoming {
     display: grid;
-    grid-template-rows: 45% 45%;
+    grid-template-rows: repeat(2, 45%);
     row-gap: 4%;
   }
 
