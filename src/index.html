@@ -11,70 +11,57 @@
   <body>
     <header class="header">
       <div class="top-row">
-      <h2>Date</h2>
-      <h3 class="user"><i class="fas fa-user"></i>User</h3>
+      <h2 id="date">Date</h2>
+      <h3 id="username" class="user"><i class="fas fa-user"></i></h3>
     </div>
-      <h1 class="welcome"><i class="fas fa-spa"></i>Welcome<i class="fas fa-spa"></i></h1>
+      <h1 id="greeting" class="welcome"><i class="fas fa-spa"></i>Welcome<i class="fas fa-spa"></i></h1>
     </header>
     <main id="user-view" class="main">
       <section class="overview">
         <div>
         <button id="bookingButton" class="booking-button">Book A Trip</button>
       </div>
-        <article class="form-section hidden">
-          <i class="fas fa-times fa-2x"></i>
+        <article id="bookingForm" class="form-section hidden">
+          <i id="exitButton" class="fas fa-times fa-2x"></i>
           <h1 class="form-heading">Book A New Trip</h1>
           <form class="trip-form">
             <label for="destination">Choose a destination</label>
             <select id="destination" name="destination" required>
-              <option value="Bali">Bali</option>
-              <option value="Peru">Peru</option>
             </select>
-            <label for="date">Starting Date</label>
-            <input type="text" placeholder="YYYY/MM/DD" id="date" required>
-            <label for="duration">Trip Duration(days)</label>
-            <input type="number" id="duration" required>
+            <label for="startDate">Start Date</label>
+            <input type="text" placeholder="Click to select" id="startDate" required>
+            <label for="endDate">Return Date</label>
+            <input type="text" placeholder="Click to select" id="endDate" required>
+            <!-- <label for="duration">Trip Duration(days)</label> -->
+            <!-- <input type="number" id="duration" required> -->
             <label for="travelers">Number of Travelers</label>
             <input type="number" id="travelers" required>
             <input class ="submit" type="submit" value="Request Booking" required>
           </form>
         </article>
-        <h3>Trip Costs This Year: $2854</h3>
+        <h3 id="tripCostTotal">Trip Costs This Year: $2854</h3>
       </section>
       <section class="trips">
         <div class="trip-list current-upcoming">
         <article class="short-trip-list">
           <h1>Upcoming Trips</h1>
-          <ul class="trip-list-items">
-            <li>TRIP</li>
-            <li>TRIP</li>
+          <ul id="upcomingTrips" class="trip-list-items">
           </ul>
         </article>
         <article class="short-trip-list">
           <h1>Current Trips</h1>
-          <ul class="trip-list-items">
-            <li>TRIP</li>
+          <ul id="currentTrips" class="trip-list-items">
           </ul>
         </article>
       </div>
         <article class="trip-list">
           <h1>Trips Pending Approval</h1>
-          <ul class="trip-list-items">
-            <li>TRIP</li>
-            <li>TRIP</li>
-            <li>TRIP</li>
-            <li>TRIP</li>
-            <li>TRIP</li>
+          <ul id="pendingTrips" class="trip-list-items">
           </ul>
         </article>
         <article class="trip-list">
           <h1>Past Trips</h1>
-          <ul class="trip-list-items">
-            <li>TRIP</li>
-            <li>TRIP</li>
-            <li>TRIP</li>
-            <li>TRIP</li>
-            <li>TRIP</li>
+          <ul id="pastTrips" class="trip-list-items">
           </ul>
         </article>
       </section>
