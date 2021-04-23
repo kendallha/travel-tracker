@@ -10,6 +10,16 @@ let domUpdates = {
   
   displayDate(date, element) {
     element.innerHTML = date;
+  },
+
+  clearTrips(element) {
+    element.innerHTML = ``;
+  },
+
+  displayTrips(trip, element) {
+    element.innerHTML += `
+    <li>${trip.destination.destination}: ${trip.date}
+    `
   }
 }
 

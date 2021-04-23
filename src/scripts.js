@@ -16,6 +16,8 @@ let dateDisplay = document.querySelector("#date");
 let username = document.querySelector("#username");
 let greeting = document.querySelector("#greeting");
 let bookingButton = document.querySelector("#bookingButton");
+let pendingTripsList = document.querySelector("#pendingTrips");
+let pastTripsList = document.querySelector("#pastTrips");
 
 
 window.addEventListener("load", fetchAPIData);
@@ -57,4 +59,20 @@ function getNewTraveler(travelerInfo, tripRepository) {
 
 function populateDOM() {
   domUpdates.displayDate(date, dateDisplay);
+  retrievePendingTrips();
+  retrievePastTrips();
+}
+
+function retrievePendingTrips() {
+  const pendingTrips = trips.getPendingTripsByUser(traveler.id);
+  showTrips(pendingTrips, pendingTripsList);
+}
+
+function retrievePastTrips() {
+  const pastTrips = trips.getPastTripsByUser(traveler.id);
+  showTrips(pastTrips, pastTripsList);
+}
+
+function showTrips(selectedTrips, element) {
+  selectedTrips.forEach(trip => domUpdates.displayTrips(trip, element))
 }
