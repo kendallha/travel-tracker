@@ -29,6 +29,10 @@ let domUpdates = {
   showBookingForm(element) {
     element.classList.toggle("hidden");
   },
+
+  addDestinationOption(destination, element) {
+    element.innerHTML += `<option id=${destination.id} value=${destination.id}>${destination.destination}</option>`
+  }
 }
 
 export default domUpdates;

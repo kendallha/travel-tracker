@@ -24,6 +24,7 @@ let pastTripsList = document.querySelector("#pastTrips");
 let currentTripsList = document.querySelector("#currentTrips");
 let upcomingTripsList = document.querySelector("#upcomingTrips");
 let tripCostTotal = document.querySelector("#tripCostTotal");
+let destinationDropdown = document.querySelector("#destination");
 
 
 window.addEventListener("load", fetchAPIData);
@@ -76,6 +77,7 @@ function getUserView(travelerData) {
   getNewTraveler(travelerData, trips);
   retrieveTrips();
   getTripSpending();
+  populateDestinationOptions();
 }
 
 function retrieveTrips() {
@@ -113,5 +115,20 @@ function showTrips(selectedTrips, element) {
 function getTripSpending() {
   const spending = traveler.getTotalCostThisYear(date);
   domUpdates.displayCostThisYear(spending, tripCostTotal);
+}
+
+function populateDestinationOptions() {
+  const alphabeticalDestinations = destinations.destinations.sort((a,b) => {
+    let destinationA = a.destination.toLowerCase();
+    let destinationB = b.destination.toLowerCase();
+    if (destinationA < destinationB) {
+      return -1;
+    }
+    if (destinationA > destinationB) {
+      return 1;
+    }
+    return 0;
+  });
+  alphabeticalDestinations.forEach(destination => domUpdates.addDestinationOption(destination, destinationDropdown))
 }
 
