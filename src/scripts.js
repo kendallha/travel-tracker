@@ -6,13 +6,17 @@ import TripRepository from './trip-repo';
 import dayjs from 'dayjs';
 dayjs().format();
 
-let date = dayjs("12/11/2020");
+let date = dayjs("12/11/2020").format('MM/DD/YYYY');
 let traveler;
 let trips;
 let destinations;
 let userIdInput = 1;
 
+let dateDisplay = document.querySelector("#date");
+let username = document.querySelector("#username");
+let greeting = document.querySelector("#greeting");
 let bookingButton = document.querySelector("#bookingButton");
+
 
 window.addEventListener("load", fetchAPIData);
 bookingButton.addEventListener("click", () => {
@@ -39,13 +43,18 @@ function fetchAPIData() {
 
 function prepareDOM([travelerData, tripData, destinationData]) {
   destinations = new DestinationRepository(destinationData.destinations);
-  console.log(destinations);
   trips = new TripRepository(tripData.trips, destinations.destinations);
   getNewTraveler(travelerData, trips);
+  populateDOM();
 }
 
 function getNewTraveler(travelerInfo, tripRepository) {
   traveler = new Traveler(travelerInfo, tripRepository);
-  //get first name, call DOM function to show it in banner
+  const firstName = traveler.name.split(" ")[0];
+  domUpdates.greetTraveler(firstName, greeting);
+  domUpdates.showUserName(traveler.name, username);
 }
 
+function populateDOM() {
+  domUpdates.displayDate(date, dateDisplay);
+}
