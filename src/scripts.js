@@ -59,6 +59,29 @@ function fetchAPIData() {
     .then(data => prepareDOM(data))
     .catch(error => console.log(error))
 }
+
+function requestNewBooking(tripId, destinationInputId, numberTravelers) {
+  fetch("http://localhost:3001/api/v1/trips", {
+    method: "POST",
+    body: JSON.stringify({
+      id: tripId,
+      userID: traveler.id,
+      destinationID: destinationInputId,
+      travelers: numberTravelers,
+      date: tripStartDate.format("YYYY/MM/DD"),
+      duration: getTripDuration(),
+      status: "pending",
+      suggestedActivities: []
+    }),
+    headers: {
+      "Content-Type": "application/json"
+      }  
+  })
+    .then(response => response.json())
+    .then(data => updatePendingTrips())
+    .catch(error => console.log(error))
+}; 
+
 //DATEPICKER HANDLING
 const dateSplitter = date => {
   let splitDate = date.split("/");
