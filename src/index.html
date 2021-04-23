@@ -2,21 +2,33 @@
 <html lang="en-US">
   <head>
     <title>Travel Tracker</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Questrial&display=swap');
+    </style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <header>
-      <h1>Welcome</h1>
+    <header class="header">
+      <div class="top-row">
       <h2>Date</h2>
+      <h3 class="user"><i class="fas fa-user"></i>User</h3>
+    </div>
+      <h1 class="welcome"><i class="fas fa-spa"></i>Welcome<i class="fas fa-spa"></i></h1>
     </header>
     <main id="user-view" class="main">
-      <section>
-        <button>Book A Trip</button>
-        <article class="hidden">
-          <h1>Book A New Trip</h1>
-          <form>
+      <section class="overview">
+        <div>
+        <button class="booking-button">Book A Trip</button>
+      </div>
+        <article class="form-section hidden">
+          <i class="fas fa-times fa-2x"></i>
+          <h1 class="form-heading">Book A New Trip</h1>
+          <form class="trip-form">
             <label for="destination">Choose a destination</label>
             <select id="destination" name="destination" required>
-              <!-- <option value="Bali">Bali</option> -->
+              <option value="Bali">Bali</option>
+              <option value="Peru">Peru</option>
             </select>
             <label for="date">Starting Date</label>
             <input type="text" placeholder="YYYY/MM/DD" id="date" required>
@@ -24,23 +36,46 @@
             <input type="number" id="duration" required>
             <label for="travelers">Number of Travelers</label>
             <input type="number" id="travelers" required>
-            <input type="submit" value="Request Booking" required>
+            <input class ="submit" type="submit" value="Request Booking" required>
           </form>
         </article>
-        <h3>Total Trip Cost This Year</h3>
+        <h3>Trip Costs This Year: $2854</h3>
       </section>
-      <section>
-        <article>
+      <section class="trips">
+        <div class="trip-list current-upcoming">
+        <article class="short-trip-list">
           <h1>Upcoming Trips</h1>
-          <ul></ul>
+          <ul class="trip-list-items">
+            <li>TRIP</li>
+            <li>TRIP</li>
+          </ul>
         </article>
-        <article>
+        <article class="short-trip-list">
+          <h1>Current Trips</h1>
+          <ul class="trip-list-items">
+            <li>TRIP</li>
+          </ul>
+        </article>
+      </div>
+        <article class="trip-list">
           <h1>Trips Pending Approval</h1>
-          <ul></ul>
+          <ul class="trip-list-items">
+            <li>TRIP</li>
+            <li>TRIP</li>
+            <li>TRIP</li>
+            <li>TRIP</li>
+            <li>TRIP</li>
+          </ul>
         </article>
-        <article>
+        <article class="trip-list">
           <h1>Past Trips</h1>
-          <ul></ul>
+          <ul class="trip-list-items">
+            <li>TRIP</li>
+            <li>TRIP</li>
+            <li>TRIP</li>
+            <li>TRIP</li>
+            <li>TRIP</li>
+          </ul>
         </article>
       </section>
     </main>
@@ -48,11 +83,11 @@
       <h3>Total Revenue This Year</h3>
       <article>
         <h1>Trips Pending Approval</h1>
-        <ul></ul>
+        <ul class="trip-list-items"></ul>
       </article>
       <article>
         <h1>Travelers on Trips Today</h1>
-        <ul></ul>
+        <ul class="trip-list-items"></ul>
       </article>
     </main>
     

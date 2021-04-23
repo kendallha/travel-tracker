@@ -1,0 +1,46 @@
+@media screen and (min-width: 750px) {
+  .top-row {
+    margin-top: 5%;
+    margin-bottom: 0;
+    height: 10%;
+  }
+
+  .welcome {
+    margin-top: 0;
+    padding-top: 0;
+    font-size: 2.8em;
+    height: 10%
+  }
+
+  .overview {
+    flex-direction: row;
+    align-items: flex-start;
+    font-size: 2em;
+    padding-top: 2%;
+  }
+
+  .trips {
+    display: grid;
+    grid-template-columns: repeat(3, 30%);
+    column-gap: 3%;
+    height: 100%;
+  }
+
+  .trip-list {
+    // height: 90%;
+    // width: 100%;
+    @include set-size(100%, 90%);
+    justify-content: flex-start;
+    font-size: 1em;
+    
+  }
+  .current-upcoming {
+    display: grid;
+    grid-template-rows: repeat(2, 45%);
+    row-gap: 4%;
+  }
+
+  .form-heading {
+    margin-top: 0;
+  }
+}
