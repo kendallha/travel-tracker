@@ -22,6 +22,7 @@ class Trip {
     const totalCost = (this.destination.dailyLodgingCost * this.duration) +   (this.destination.flightCostPerPerson * this.travelers);
     return totalCost * .1;
   }
+
 }
 
 export default Trip

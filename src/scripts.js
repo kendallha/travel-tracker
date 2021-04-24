@@ -16,14 +16,15 @@ let tripEndDate;
 let traveler;
 let trips;
 let destinations;
-let userIdInput = 2;
+let userIdInput = 9;
 
 //QUERY SELECTOR VARS
 let dateDisplay = document.querySelector("#date");
 let username = document.querySelector("#username");
 let greeting = document.querySelector("#greeting");
 let bookingButton = document.querySelector("#bookingButton");
-let bookingForm = document.querySelector("#bookingForm");
+let bookingFormSection = document.querySelector("#bookingForm");
+let bookingForm = document.querySelector("#form");
 let exitButton = document.querySelector("#exitButton");
 let pendingTripsList = document.querySelector("#pendingTrips");
 let pastTripsList = document.querySelector("#pastTrips");
@@ -39,10 +40,10 @@ let requestTripButton = document.querySelector("#submitButton");
 //EVENT LISTENERS
 window.addEventListener("load", fetchAPIData);
 bookingButton.addEventListener("click", () => {
-  domUpdates.showBookingForm(bookingForm);
+  domUpdates.showBookingForm(bookingFormSection);
 });
 exitButton.addEventListener("click", () => {
-  domUpdates.showBookingForm(bookingForm);
+  domUpdates.showBookingForm(bookingFormSection);
 });
 requestTripButton.addEventListener("click", () => {
   createNewTripFromBookingForm(traveler, destinations, trips);
@@ -85,7 +86,8 @@ function requestNewBooking(newTrip) {
       }  
   })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => updatePendingTrips(newTrip))
+    .then(data => domUpdates.resetBookingForm(bookingForm))
     .catch(error => console.log(error))
 }; 
 
@@ -194,11 +196,6 @@ function populateDestinationOptions() {
   alphabeticalDestinations.forEach(destination => domUpdates.addDestinationOption(destination, destinationDropdown))
 } 
 
-// function getBookingDetails() {
-//   //save input as variables
-//   //POST request passing variables as parameters
-// }
-
 function getTripDuration() {
   return tripEndDate.diff(tripStartDate, "days", true);
 }
@@ -217,6 +214,11 @@ function createNewTripFromBookingForm(traveler, destinations, trips) {
   const newTrip = new Trip(newTripInput, destinations.destinations);
   requestNewBooking(newTrip);
   event.preventDefault();
+}
+
+function updatePendingTrips(newTrip) {
+  trips.trips.push(newTrip);
+  retrievePendingTrips();
 }
 
 
