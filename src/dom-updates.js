@@ -26,8 +26,9 @@ let domUpdates = {
     element.innerText = `Trip Costs This Year: $ ${amount}`
   },
 
-  showBookingForm(element) {
+  showBookingForm(element, section) {
     element.classList.toggle("hidden");
+    section.innerText = ``;
   },
 
   addDestinationOption(destination, element) {
@@ -40,6 +41,10 @@ let domUpdates = {
 
   displayEstimatedPrice(element, quote) {
     element.innerHTML = `Estimated trip cost: $ ${quote}`;
+  },
+
+  displayBookingConfirmation(element) {
+    element.innerHTML = `Thanks for booking. Your trip has been sent to an agent for approval.`
   }
 }
 

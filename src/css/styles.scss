@@ -94,8 +94,7 @@ body {
   @extend .booking-button;
   font-size: .8em;
   margin-top: 2%;
-  width: 40%;
-  height: 100%;
+  @include set-size(40%, 100%);
   white-space: normal;
 }
 
@@ -170,6 +169,7 @@ select {
   font-size: 1em;
   text-align: center;
 }
+
 .hidden {
   display: none;
 }

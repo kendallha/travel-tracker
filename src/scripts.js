@@ -42,10 +42,10 @@ let requestQuoteButton = document.querySelector("#requestQuote");
 //EVENT LISTENERS
 window.addEventListener("load", fetchAPIData);
 bookingButton.addEventListener("click", () => {
-  domUpdates.showBookingForm(bookingFormSection);
+  domUpdates.showBookingForm(bookingFormSection, estimatedTripCost);
 });
 exitButton.addEventListener("click", () => {
-  domUpdates.showBookingForm(bookingFormSection);
+  domUpdates.showBookingForm(bookingFormSection, estimatedTripCost);
 });
 requestTripButton.addEventListener("click", () => {
   submitTripForApproval(createNewTripFromBookingForm(traveler, destinations, trips));
@@ -93,6 +93,7 @@ function requestNewBooking(newTrip) {
     .then(response => response.json())
     .then(data => updatePendingTrips(newTrip))
     .then(data => domUpdates.resetBookingForm(bookingForm))
+    .then(data => domUpdates.displayBookingConfirmation(estimatedTripCost))
     .catch(error => console.log(error))
 }; 
 
@@ -223,44 +224,11 @@ function submitTripForApproval(newTrip) {
   requestNewBooking(newTrip);
   event.preventDefault();
 }
-// function createNewTripFromBookingForm(traveler, destinations, trips) {
-//   const newTripInput = {
-//     id: trips.trips.length + 1,
-//     userID: traveler.id,
-//     destinationID: parseInt(destinationDropdown.value),
-//     travelers: numberOfTravelersInput.value,
-//     date: tripStartDate.format("YYYY/MM/DD"),
-//     duration: getTripDuration(),
-//     status: "pending",
-//     suggestedActivities: []
-//     }
-//   const newTrip = new Trip(newTripInput, destinations.destinations);
-//   requestNewBooking(newTrip);
-//   event.preventDefault();
-// }
 
 function updatePendingTrips(newTrip) {
   trips.trips.push(newTrip);
   retrievePendingTrips();
 }
-
-// function getTripPriceQuote(traveler, destinations, trips) {
-//   const newTripInput = {
-//     id: trips.trips.length + 1,
-//     userID: traveler.id,
-//     destinationID: parseInt(destinationDropdown.value),
-//     travelers: numberOfTravelersInput.value,
-//     date: tripStartDate.format("YYYY/MM/DD"),
-//     duration: getTripDuration(),
-//     status: "pending",
-//     suggestedActivities: []
-//     }
-//   const newTrip = new Trip(newTripInput, destinations.destinations);
-//   const quote = newTrip.getTripCost();
-//   domUpdates.displayEstimatedPrice(estimatedTripCost, quote);
-//   event.preventDefault();
-
-// }
 
 function getTripPriceQuote(newTrip) {
   const quote = newTrip.getTripCost();
