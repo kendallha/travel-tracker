@@ -24,19 +24,19 @@
         <article id="bookingForm" class="form-section hidden">
           <i id="exitButton" class="fas fa-times fa-2x"></i>
           <h1 class="form-heading">Book A New Trip</h1>
-          <form class="trip-form">
+          <form id="form" class="trip-form">
             <label for="destination">Choose a destination</label>
             <select id="destination" name="destination" required>
             </select>
             <label for="startDate">Start Date</label>
-            <input type="text" placeholder="Click to select" id="startDate" required>
+            <input type="text" placeholder="Click to select" id="startDate" required/>
             <label for="endDate">Return Date</label>
-            <input type="text" placeholder="Click to select" id="endDate" required>
+            <input type="text" placeholder="Click to select" id="endDate" required/>
             <!-- <label for="duration">Trip Duration(days)</label> -->
             <!-- <input type="number" id="duration" required> -->
-            <label for="travelers">Number of Travelers</label>
-            <input type="number" id="travelers" required>
-            <input class ="submit" type="submit" value="Request Booking" required>
+            <label for="numTravelers">Number of Travelers</label>
+            <input type="number" id="numTravelers" min="1" value="1" required />
+            <input id="submitButton" class="submit" type="submit" value="Request Booking" required/>
           </form>
         </article>
         <h3 id="tripCostTotal">Trip Costs This Year: $2854</h3>

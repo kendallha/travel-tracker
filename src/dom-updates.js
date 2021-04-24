@@ -32,6 +32,10 @@ let domUpdates = {
 
   addDestinationOption(destination, element) {
     element.innerHTML += `<option id=${destination.id} value=${destination.id}>${destination.destination}</option>`
+  },
+
+  resetBookingForm(element) {
+    element.reset();
   }
 }
 

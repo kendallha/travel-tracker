@@ -5,6 +5,8 @@ import DestinationRepository from './destination-repo';
 import TripRepository from './trip-repo';
 import datepicker from 'js-datepicker';
 import dayjs from 'dayjs';
+import Destination from './destination';
+import Trip from './trip';
 dayjs().format();
 
 //GLOBAL VARS
@@ -14,14 +16,15 @@ let tripEndDate;
 let traveler;
 let trips;
 let destinations;
-let userIdInput = 2;
+let userIdInput = 9;
 
 //QUERY SELECTOR VARS
 let dateDisplay = document.querySelector("#date");
 let username = document.querySelector("#username");
 let greeting = document.querySelector("#greeting");
 let bookingButton = document.querySelector("#bookingButton");
-let bookingForm = document.querySelector("#bookingForm");
+let bookingFormSection = document.querySelector("#bookingForm");
+let bookingForm = document.querySelector("#form");
 let exitButton = document.querySelector("#exitButton");
 let pendingTripsList = document.querySelector("#pendingTrips");
 let pastTripsList = document.querySelector("#pastTrips");
@@ -31,14 +34,19 @@ let tripCostTotal = document.querySelector("#tripCostTotal");
 let destinationDropdown = document.querySelector("#destination");
 let startDateInput = document.querySelector("#startDate");
 let endDateInput = document.querySelector("#endDate");
+let numberOfTravelersInput = document.querySelector("#numTravelers");
+let requestTripButton = document.querySelector("#submitButton");
 
 //EVENT LISTENERS
 window.addEventListener("load", fetchAPIData);
 bookingButton.addEventListener("click", () => {
-  domUpdates.showBookingForm(bookingForm);
+  domUpdates.showBookingForm(bookingFormSection);
 });
 exitButton.addEventListener("click", () => {
-  domUpdates.showBookingForm(bookingForm);
+  domUpdates.showBookingForm(bookingFormSection);
+});
+requestTripButton.addEventListener("click", () => {
+  createNewTripFromBookingForm(traveler, destinations, trips);
 });
 
 //NETWORK REQUESTS
@@ -59,6 +67,30 @@ function fetchAPIData() {
     .then(data => prepareDOM(data))
     .catch(error => console.log(error))
 }
+
+function requestNewBooking(newTrip) {
+  fetch("http://localhost:3001/api/v1/trips", {
+    method: "POST",
+    body: JSON.stringify({
+      id: newTrip.id,
+      userID: newTrip.userID,
+      destinationID: newTrip.destination.id,
+      travelers: newTrip.travelers,
+      date: newTrip.date,
+      duration: newTrip.duration,
+      status: newTrip.status,
+      suggestedActivities: newTrip.suggestedActivities
+    }),
+    headers: {
+      "Content-Type": "application/json"
+      }  
+  })
+    .then(response => response.json())
+    .then(data => updatePendingTrips(newTrip))
+    .then(data => domUpdates.resetBookingForm(bookingForm))
+    .catch(error => console.log(error))
+}; 
+
 //DATEPICKER HANDLING
 const dateSplitter = date => {
   let splitDate = date.split("/");
@@ -164,14 +196,29 @@ function populateDestinationOptions() {
   alphabeticalDestinations.forEach(destination => domUpdates.addDestinationOption(destination, destinationDropdown))
 } 
 
-// function getBookingDetails() {
-//   //save input as variables
-//   //POST request passing variables as parameters
-// }
-
 function getTripDuration() {
-  console.log(tripEndDate.diff(tripStartDate, "days", true));
   return tripEndDate.diff(tripStartDate, "days", true);
+}
+
+function createNewTripFromBookingForm(traveler, destinations, trips) {
+  const newTripInput = {
+    id: trips.trips.length + 1,
+    userID: traveler.id,
+    destinationID: parseInt(destinationDropdown.value),
+    travelers: numberOfTravelersInput.value,
+    date: tripStartDate.format("YYYY/MM/DD"),
+    duration: getTripDuration(),
+    status: "pending",
+    suggestedActivities: []
+    }
+  const newTrip = new Trip(newTripInput, destinations.destinations);
+  requestNewBooking(newTrip);
+  event.preventDefault();
+}
+
+function updatePendingTrips(newTrip) {
+  trips.trips.push(newTrip);
+  retrievePendingTrips();
 }
 
 
