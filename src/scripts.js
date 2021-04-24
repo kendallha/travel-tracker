@@ -142,7 +142,6 @@ function getNewTraveler(travelerInfo, tripRepository) {
   traveler = new Traveler(travelerInfo, tripRepository);
   const firstName = traveler.name.split(" ")[0];
   domUpdates.greetTraveler(firstName, greeting);
-  domUpdates.showUserName(traveler.name, username);
 }
 
 function populateDOM(travelerData) {
