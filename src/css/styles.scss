@@ -7,6 +7,12 @@ html, body {
   @include set-size(100%, 100%)
 }
 
+.background {
+  @include set-size(100%, 100%);
+  z-index: -1;
+  position: fixed;
+}
+
 body {
   display: grid;
   grid-template-rows: 20% 80%;
@@ -14,28 +20,40 @@ body {
     "header"
     "main";
   background-color: $background-color;
-  // background-image: url("./images/portugal.jpg");
   font-family: $primary-font;
   color: $primary-font-color;
 }
+
+// .background {
+//   @include set-size(100%, 100%);
+//   z-index: -1;
+//   position: fixed;
+// }
 
 .header {
   grid-area: header;
   @include flex-column;
   justify-content: center;
-  // background-color: $secondary-color;
+  background-color: $secondary-color;
   font-size: 1em;
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;
+  opacity: 80%;
 
 }
 
 .top-row {
   width: 90%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   margin: 10% 5% 0 5%;
+}
+
+.top-left {
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .logo {
@@ -70,7 +88,7 @@ body {
   justify-content: space-evenly;
   font-size: 1.3em;
   padding-top: 5%;
-  color: $accent-color;
+  // color: $accent-color;
 }
 
 .booking-button {
@@ -114,13 +132,14 @@ body {
   background-color: $secondary-color;
   font-size: .7em;
   border-radius: 5px;
+  opacity: 80%;
 }
 
-.current-upcoming {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
+// .current-upcoming {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-around;
+// }
 
 .trip-list-items {
   font-size: 1.4em;
