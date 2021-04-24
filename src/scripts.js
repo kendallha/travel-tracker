@@ -45,7 +45,7 @@ exitButton.addEventListener("click", () => {
   domUpdates.showBookingForm(bookingForm);
 });
 requestTripButton.addEventListener("click", () => {
-  createNewTripFromBookingForm(traveler, destinations);
+  createNewTripFromBookingForm(traveler, destinations, trips);
 });
 
 //NETWORK REQUESTS
@@ -67,27 +67,27 @@ function fetchAPIData() {
     .catch(error => console.log(error))
 }
 
-// function requestNewBooking(newTrip) {
-//   fetch("http://localhost:3001/api/v1/trips", {
-//     method: "POST",
-//     body: JSON.stringify({
-//       id: newTrip.id,
-//       userID: traveler.id,
-//       destinationID: newTrip.destination.id,
-//       travelers: numberTravelers,
-//       date: tripStartDate.format("YYYY/MM/DD"),
-//       duration: getTripDuration(),
-//       status: "pending",
-//       suggestedActivities: []
-//     }),
-//     headers: {
-//       "Content-Type": "application/json"
-//       }  
-//   })
-//     .then(response => response.json())
-//     .then(data => updatePendingTrips())
-//     .catch(error => console.log(error))
-// }; 
+function requestNewBooking(newTrip) {
+  fetch("http://localhost:3001/api/v1/trips", {
+    method: "POST",
+    body: JSON.stringify({
+      id: newTrip.id,
+      userID: newTrip.userID,
+      destinationID: newTrip.destination.id,
+      travelers: newTrip.travelers,
+      date: newTrip.date,
+      duration: newTrip.duration,
+      status: newTrip.status,
+      suggestedActivities: newTrip.suggestedActivities
+    }),
+    headers: {
+      "Content-Type": "application/json"
+      }  
+  })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.log(error))
+}; 
 
 //DATEPICKER HANDLING
 const dateSplitter = date => {
@@ -203,9 +203,9 @@ function getTripDuration() {
   return tripEndDate.diff(tripStartDate, "days", true);
 }
 
-function createNewTripFromBookingForm(traveler, destinations) {
+function createNewTripFromBookingForm(traveler, destinations, trips) {
   const newTripInput = {
-    id: Math.round(((Math.random()*100) + 200)),
+    id: trips.trips.length + 1,
     userID: traveler.id,
     destinationID: parseInt(destinationDropdown.value),
     travelers: numberOfTravelersInput.value,
@@ -214,8 +214,9 @@ function createNewTripFromBookingForm(traveler, destinations) {
     status: "pending",
     suggestedActivities: []
     }
-  const newTripRequest = new Trip(newTripInput, destinations.destinations);
-  console.log(newTripRequest);
+  const newTrip = new Trip(newTripInput, destinations.destinations);
+  requestNewBooking(newTrip);
+  event.preventDefault();
 }
 
 
