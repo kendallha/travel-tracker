@@ -32,8 +32,6 @@
             <input type="text" placeholder="Click to select" id="startDate" required/>
             <label for="endDate">Return Date</label>
             <input type="text" placeholder="Click to select" id="endDate" required/>
-            <!-- <label for="duration">Trip Duration(days)</label> -->
-            <!-- <input type="number" id="duration" required> -->
             <label for="numTravelers">Number of Travelers</label>
             <input type="number" id="numTravelers" min="1" value="1" required />
             <div class="button-wrapper">
@@ -46,18 +44,18 @@
         <h3 id="tripCostTotal">Trip Costs This Year: $2854</h3>
       </section>
       <section class="trips">
-        <div class="trip-list current-upcoming">
-        <article class="short-trip-list">
-          <h1>Upcoming Trips</h1>
-          <ul id="upcomingTrips" class="trip-list-items">
-          </ul>
-        </article>
-        <article class="short-trip-list">
+        <!-- <div class="trip-list current-upcoming"> -->
+        <article class="trip-list">
           <h1>Current Trips</h1>
           <ul id="currentTrips" class="trip-list-items">
           </ul>
         </article>
-      </div>
+        <article class="trip-list">
+          <h1>Upcoming Trips</h1>
+          <ul id="upcomingTrips" class="trip-list-items">
+          </ul>
+        </article>
+      <!-- </div> -->
         <article class="trip-list">
           <h1>Trips Pending Approval</h1>
           <ul id="pendingTrips" class="trip-list-items">
