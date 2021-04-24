@@ -36,6 +36,10 @@ let domUpdates = {
 
   resetBookingForm(element) {
     element.reset();
+  },
+
+  displayEstimatedPrice(element, quote) {
+    element.innerHTML = `Estimated trip cost: $ ${quote}`;
   }
 }
 

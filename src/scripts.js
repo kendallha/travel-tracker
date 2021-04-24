@@ -36,6 +36,8 @@ let startDateInput = document.querySelector("#startDate");
 let endDateInput = document.querySelector("#endDate");
 let numberOfTravelersInput = document.querySelector("#numTravelers");
 let requestTripButton = document.querySelector("#submitButton");
+let estimatedTripCost = document.querySelector("#price");
+let requestQuoteButton = document.querySelector("#requestQuote");
 
 //EVENT LISTENERS
 window.addEventListener("load", fetchAPIData);
@@ -46,8 +48,11 @@ exitButton.addEventListener("click", () => {
   domUpdates.showBookingForm(bookingFormSection);
 });
 requestTripButton.addEventListener("click", () => {
-  createNewTripFromBookingForm(traveler, destinations, trips);
+  submitTripForApproval(createNewTripFromBookingForm(traveler, destinations, trips));
 });
+requestQuoteButton.addEventListener("click", () => {
+  getTripPriceQuote(createNewTripFromBookingForm(traveler, destinations, trips));
+})
 
 //NETWORK REQUESTS
 function fetchAPIData() {
@@ -211,14 +216,56 @@ function createNewTripFromBookingForm(traveler, destinations, trips) {
     status: "pending",
     suggestedActivities: []
     }
-  const newTrip = new Trip(newTripInput, destinations.destinations);
+  return new Trip(newTripInput, destinations.destinations);
+}
+
+function submitTripForApproval(newTrip) {
   requestNewBooking(newTrip);
   event.preventDefault();
 }
+// function createNewTripFromBookingForm(traveler, destinations, trips) {
+//   const newTripInput = {
+//     id: trips.trips.length + 1,
+//     userID: traveler.id,
+//     destinationID: parseInt(destinationDropdown.value),
+//     travelers: numberOfTravelersInput.value,
+//     date: tripStartDate.format("YYYY/MM/DD"),
+//     duration: getTripDuration(),
+//     status: "pending",
+//     suggestedActivities: []
+//     }
+//   const newTrip = new Trip(newTripInput, destinations.destinations);
+//   requestNewBooking(newTrip);
+//   event.preventDefault();
+// }
 
 function updatePendingTrips(newTrip) {
   trips.trips.push(newTrip);
   retrievePendingTrips();
+}
+
+// function getTripPriceQuote(traveler, destinations, trips) {
+//   const newTripInput = {
+//     id: trips.trips.length + 1,
+//     userID: traveler.id,
+//     destinationID: parseInt(destinationDropdown.value),
+//     travelers: numberOfTravelersInput.value,
+//     date: tripStartDate.format("YYYY/MM/DD"),
+//     duration: getTripDuration(),
+//     status: "pending",
+//     suggestedActivities: []
+//     }
+//   const newTrip = new Trip(newTripInput, destinations.destinations);
+//   const quote = newTrip.getTripCost();
+//   domUpdates.displayEstimatedPrice(estimatedTripCost, quote);
+//   event.preventDefault();
+
+// }
+
+function getTripPriceQuote(newTrip) {
+  const quote = newTrip.getTripCost();
+  domUpdates.displayEstimatedPrice(estimatedTripCost, quote);
+  event.preventDefault();
 }
 
 
