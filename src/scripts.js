@@ -36,18 +36,23 @@ let startDateInput = document.querySelector("#startDate");
 let endDateInput = document.querySelector("#endDate");
 let numberOfTravelersInput = document.querySelector("#numTravelers");
 let requestTripButton = document.querySelector("#submitButton");
+let estimatedTripCost = document.querySelector("#price");
+let requestQuoteButton = document.querySelector("#requestQuote");
 
 //EVENT LISTENERS
 window.addEventListener("load", fetchAPIData);
 bookingButton.addEventListener("click", () => {
-  domUpdates.showBookingForm(bookingFormSection);
+  domUpdates.showBookingForm(bookingFormSection, estimatedTripCost);
 });
 exitButton.addEventListener("click", () => {
-  domUpdates.showBookingForm(bookingFormSection);
+  domUpdates.showBookingForm(bookingFormSection, estimatedTripCost);
 });
 requestTripButton.addEventListener("click", () => {
-  createNewTripFromBookingForm(traveler, destinations, trips);
+  submitTripForApproval(createNewTripFromBookingForm(traveler, destinations, trips));
 });
+requestQuoteButton.addEventListener("click", () => {
+  getTripPriceQuote(createNewTripFromBookingForm(traveler, destinations, trips));
+})
 
 //NETWORK REQUESTS
 function fetchAPIData() {
@@ -88,6 +93,7 @@ function requestNewBooking(newTrip) {
     .then(response => response.json())
     .then(data => updatePendingTrips(newTrip))
     .then(data => domUpdates.resetBookingForm(bookingForm))
+    .then(data => domUpdates.displayBookingConfirmation(estimatedTripCost))
     .catch(error => console.log(error))
 }; 
 
@@ -211,7 +217,10 @@ function createNewTripFromBookingForm(traveler, destinations, trips) {
     status: "pending",
     suggestedActivities: []
     }
-  const newTrip = new Trip(newTripInput, destinations.destinations);
+  return new Trip(newTripInput, destinations.destinations);
+}
+
+function submitTripForApproval(newTrip) {
   requestNewBooking(newTrip);
   event.preventDefault();
 }
@@ -219,6 +228,12 @@ function createNewTripFromBookingForm(traveler, destinations, trips) {
 function updatePendingTrips(newTrip) {
   trips.trips.push(newTrip);
   retrievePendingTrips();
+}
+
+function getTripPriceQuote(newTrip) {
+  const quote = newTrip.getTripCost();
+  domUpdates.displayEstimatedPrice(estimatedTripCost, quote);
+  event.preventDefault();
 }
 
 

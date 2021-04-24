@@ -84,9 +84,18 @@ body {
   margin-top: 10%;
 }
 
+.button-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  height: 15%;
+  width: 100%;
+}
 .submit {
   @extend .booking-button;
+  font-size: .8em;
   margin-top: 2%;
+  @include set-size(40%, 100%);
+  white-space: normal;
 }
 
 .trips {
@@ -139,7 +148,7 @@ body {
   font-size: 1.5em;
   text-align: center;
   height: 4%;
-  margin-top: 11%;
+  margin-top: 2%;
 }
 
 .fas {
@@ -150,6 +159,15 @@ body {
   color: $accent-color;
   padding-left: 2%;
   padding-top: 2%;
+}
+
+select {
+  width: 90%;
+}
+
+.price {
+  font-size: 1em;
+  text-align: center;
 }
 
 .hidden {

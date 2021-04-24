@@ -1,4 +1,31 @@
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 650px) {
+  .trips {
+    @include set-size(100%, 100%);
+    display: grid;
+    grid-template-columns: repeat(2, 40%);
+    column-gap: 3%;
+    row-gap: 3%;
+    justify-content: center;
+    margin-right: 2%;
+  }
+
+  .trip-list {
+    @include set-size(92%, 100%);
+    justify-content: flex-start;
+    font-size: 1em; 
+  }
+
+  select {
+    width: 40%;
+  }
+
+  .price {
+    padding-top: 1%;
+  }
+  
+}
+
+@media screen and (min-width: 1000px) {
   .top-row {
     margin-top: 5%;
     margin-bottom: 0;
@@ -20,27 +47,22 @@
   }
 
   .trips {
-    display: grid;
-    grid-template-columns: repeat(3, 30%);
-    column-gap: 3%;
-    height: 100%;
+    grid-template-columns: repeat(4, 20%);
+    grid-template-rows: none;
   }
 
   .trip-list {
-    // height: 90%;
-    // width: 100%;
     @include set-size(100%, 90%);
     justify-content: flex-start;
     font-size: 1em;
     
   }
-  .current-upcoming {
-    display: grid;
-    grid-template-rows: repeat(2, 45%);
-    row-gap: 4%;
-  }
 
   .form-heading {
-    margin-top: 0;
+    margin-top: -4%;
+  }
+
+  select {
+    width: 37%;
   }
 }
