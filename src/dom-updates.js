@@ -44,7 +44,15 @@ let domUpdates = {
   },
 
   displayBookingConfirmation(element) {
-    element.innerHTML = `Thanks for booking. Your trip has been sent to an agent for approval.`
+    element.innerText = `Thanks for booking. Your trip has been sent to an agent for approval.`
+  },
+
+  displayPostError(element) {
+    element.innerText = `Oh no, something went wrong. Please try again.`
+  },
+
+  displayGetError(element) {
+    element.innerHTML += `<h3 class="error">Oh no, something went wrong. Please check your internet connection and reload the page.</h3>`
   }
 }
 
