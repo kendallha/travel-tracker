@@ -38,6 +38,7 @@ let numberOfTravelersInput = document.querySelector("#numTravelers");
 let requestTripButton = document.querySelector("#submitButton");
 let estimatedTripCost = document.querySelector("#price");
 let requestQuoteButton = document.querySelector("#requestQuote");
+let overview = document.querySelector("#overview");
 
 //EVENT LISTENERS
 window.addEventListener("load", fetchAPIData);
@@ -57,20 +58,20 @@ requestQuoteButton.addEventListener("click", () => {
 //NETWORK REQUESTS
 function fetchAPIData() {
   const travelerPromise = fetch(`http://localhost:3001/api/v1/travelers/${userIdInput}`)
-    .then(response => response.json())
+    .then(response => checkForError(response))
     .then(data => data)
   
   const tripsPromise = fetch('http://localhost:3001/api/v1/trips')
-    .then(response => response.json())
+    .then(response => checkForError(response))
     .then(data => data)
   
   const destinationsPromise = fetch('http://localhost:3001/api/v1/destinations')
-    .then(response => response.json())
+    .then(response => checkForError(response))
     .then(data => data)
 
   Promise.all([travelerPromise, tripsPromise, destinationsPromise])
     .then(data => prepareDOM(data))
-    .catch(error => console.log(error))
+    .catch(error => domUpdates.displayGetError(overview))
 }
 
 function requestNewBooking(newTrip) {
@@ -90,12 +91,20 @@ function requestNewBooking(newTrip) {
       "Content-Type": "application/json"
       }  
   })
-    .then(response => response.json())
+    .then(response => checkForError(response))
     .then(data => updatePendingTrips(newTrip))
     .then(data => domUpdates.resetBookingForm(bookingForm))
     .then(data => domUpdates.displayBookingConfirmation(estimatedTripCost))
-    .catch(error => console.log(error))
+    .catch(error => domUpdates.displayPostError(estimatedTripCost));
 }; 
+
+function checkForError(response) {
+  if (response.ok) {
+    return response.json();
+  } else {
+    throw new Error('Something went wrong. Please try again.');
+  }
+};
 
 //DATEPICKER HANDLING
 const dateSplitter = date => {

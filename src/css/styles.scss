@@ -14,7 +14,7 @@ body {
     "header"
     "main";
   background-color: #fae3d1;
-  // background-image: url("http://localhost:8080/src/images/portugal.jpeg");
+  //  background-image: url("portugal.jpg");
   font-family: $primary-font;
   color: $primary-font-color;
 }
@@ -168,6 +168,16 @@ select {
 .price {
   font-size: 1em;
   text-align: center;
+}
+
+.error {
+  position: absolute;
+  z-index: 9;
+  border: solid 1px red;
+  color: black;
+  background-color: #fae3d1;
+  width: 80%;
+  padding: 3%;
 }
 
 .hidden {
