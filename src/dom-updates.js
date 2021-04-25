@@ -3,10 +3,6 @@ let domUpdates = {
   greetTraveler(travelerName, element) {
     element.innerText = `Welcome, ${travelerName}`;
   },
-
-  showUserName(travelerFullName, element) {
-    element.innerText = travelerFullName;
-  },
   
   displayDate(date, element) {
     element.innerHTML = date;
@@ -29,6 +25,12 @@ let domUpdates = {
   showBookingForm(element, section) {
     element.classList.toggle("hidden");
     section.innerText = ``;
+    let expandedAttribute = element.getAttribute("aria-expanded");
+    if (expandedAttribute === 'true') {
+      element.setAttribute("aria-expanded", false);
+   } else {
+      element.setAttribute("aria-expanded", true);
+   }
   },
 
   addDestinationOption(destination, element) {

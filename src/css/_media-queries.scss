@@ -1,4 +1,12 @@
 @media screen and (min-width: 650px) {
+  .overview {
+    flex-direction: row;
+    align-items: flex-start;
+    font-size: 1.5em;
+    padding-top: 2%;
+    margin-bottom: 7%;
+  }
+
   .trips {
     @include set-size(100%, 100%);
     display: grid;
@@ -40,21 +48,21 @@
   }
 
   .overview {
-    flex-direction: row;
-    align-items: flex-start;
     font-size: 2em;
-    padding-top: 2%;
+    // margin-bottom: 10%;
   }
 
   .trips {
     grid-template-columns: repeat(4, 20%);
     grid-template-rows: none;
+    padding-top: 5%;
   }
 
   .trip-list {
-    @include set-size(100%, 90%);
+    // @include set-size(100%, 90%);
     justify-content: flex-start;
     font-size: 1em;
+    width: 100%;
     
   }
 
