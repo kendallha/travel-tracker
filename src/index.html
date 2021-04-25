@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <img class="background" src="../images/portugal.jpg" alt="Background image of plants">
+    <img class="background" src="../images/portugal.jpg" alt="Background image of Portugese skyline">
     <header class="header">
       <div class="top-row">
         <h2 id="date">Date</h2>
@@ -20,29 +20,29 @@
     <main id="user-view" class="main">
       <section id="overview" class="overview">
         <div>
-        <button id="bookingButton" class="booking-button">Book A Trip</button>
+        <button id="bookingButton" class="booking-button" aria-label="Open booking form">Book A Trip</button>
       </div>
-        <article id="bookingForm" class="form-section hidden">
-          <i id="exitButton" class="fas fa-times fa-2x"></i>
+        <article id="bookingForm" class="form-section hidden" aria-expanded="false">
+          <i id="exitButton" class="fas fa-times fa-2x" aria-label="Close booking form"></i>
           <h1 class="form-heading">Book A New Trip</h1>
           <form id="form" class="trip-form">
             <label for="destination">Choose a destination</label>
-            <select id="destination" name="destination" required>
+            <select id="destination" name="destination" required aria-required="true">
             </select>
             <label for="startDate">Start Date</label>
-            <input type="text" placeholder="Click to select" id="startDate" required/>
+            <input type="text" placeholder="Click to select" id="startDate" required aria-required="true" />
             <label for="endDate">Return Date</label>
-            <input type="text" placeholder="Click to select" id="endDate" required/>
+            <input type="text" placeholder="Click to select" id="endDate" required aria-required="true"/>
             <label for="numTravelers">Number of Travelers</label>
-            <input type="number" id="numTravelers" min="1" value="1" required />
+            <input type="number" id="numTravelers" min="1" value="1" required aria-required="true"/>
             <div class="button-wrapper">
-              <input id="requestQuote" class="submit" type="button" value="Get a Quote" required/>
-              <input id="submitButton" class="submit" type="submit" value="Request Booking" required/>
+              <input id="requestQuote" class="submit" type="button" value="Get a Quote" required aria-required="true"/>
+              <input id="submitButton" class="submit" type="submit" value="Request Booking" required aria-required="true"/>
           </div>
           </form>
           <h3 id="price" class="price">Estimated Trip Cost:</h3>
         </article>
-        <p class="trip-cost" id="tripCostTotal">Trip Costs This Year: $2854</p>
+        <p class="trip-cost" id="tripCostTotal"></p>
       </section>
       <section class="trips">
         <article class="trip-list">
@@ -55,7 +55,6 @@
           <ul id="upcomingTrips" class="trip-list-items">
           </ul>
         </article>
-      <!-- </div> -->
         <article class="trip-list">
           <h1>Trips Pending Approval</h1>
           <ul id="pendingTrips" class="trip-list-items">
