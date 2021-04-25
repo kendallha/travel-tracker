@@ -10,14 +10,26 @@
   </head>
   <body>
     <img class="background" src="../images/portugal.jpg" alt="Background image of Portugese skyline">
-    <header class="header">
+    <main id="logInPage" class="log-in-page">
+      <h1>Travel Tracker</h1>
+      <section class="log-in-section">
+        <form id="logInForm" class="log-in-form">
+          <label for="username">Username</label>
+          <input id="username" type="text" required aria-required="true"/>
+          <label for="password">Password</label>
+          <input id="password" type="text" required aria-required="true"/>
+          <input id="loginButton" class="submit" type="submit" value="Log In" required aria-required="true"/> 
+        </form>
+      </section>
+    </main>
+    <header class="header hidden">
       <div class="top-row">
         <h2 id="date">Date</h2>
         <i class="fas fa-user fa-2x"></i>
       </div>
       <h1 id="greeting" class="welcome">Welcome</h1>
     </header>
-    <main id="user-view" class="main">
+    <main id="user-view" class="main hidden">
       <section id="overview" class="overview">
         <div>
         <button id="bookingButton" class="booking-button" aria-label="Open booking form">Book A Trip</button>
