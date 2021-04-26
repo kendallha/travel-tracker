@@ -6,7 +6,9 @@
 }
 
 .logo {
-  margin: 0;
+  margin-left: 5%;
+  font-size: 3em;
+  font-family: 'Rock Salt', cursive;
 }
 
 .log-in-section {
@@ -34,11 +36,13 @@
 .login-input {
   @extend .login-label;
   @include set-size(100%, 80%);
+  text-align: center;
 }
 
 .login-button {
   @extend .booking-button;
-  // @include set-size(100%, 100%);
   font-size: 1.5em;
   padding: 2%;
 }
+
+
