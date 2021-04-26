@@ -1,0 +1,53 @@
+.log-in-page {
+  @include set-size(100%, 100%);
+  background-color: $light-opacity;
+  @include flex-column;
+  justify-content: space-evenly;
+}
+
+.logo {
+  margin-left: 5%;
+  font-size: 3em;
+  font-family: $secondary-font;
+}
+
+.log-in-section {
+  @include set-size(90%, 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.log-in-form {
+  @include set-size(100%, 80%);
+  padding: 10%;
+  @include flex-column;
+  justify-content: space-between;
+  border: 4px solid #2f9074;
+  border-radius: 10px;
+  background-color: $heavy-opacity;
+} 
+
+.login-label {
+  font-size: 1.7em;
+  margin-bottom: 5%;
+}
+
+.login-input {
+  @extend .login-label;
+  @include set-size(100%, 80%);
+  text-align: center;
+}
+
+.login-button {
+  @extend .booking-button;
+  font-size: 1.5em;
+  padding: 2%;
+}
+
+.error-message {
+  font-size: 1em;
+  color: $accent-color;
+}
+
+

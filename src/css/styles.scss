@@ -2,9 +2,10 @@
 @import '_variables.scss';
 @import '_mixins.scss';
 @import '~js-datepicker/src/datepicker';
+@import '_logInPage.scss';
 
 html, body {
-  @include set-size(100%, 100%)
+  @include set-size(100%, 100%);
 }
 
 .background {
@@ -15,25 +16,27 @@ html, body {
 }
 
 body {
+  font-family: $primary-font;
+  color: $primary-font-color;
+}
+
+.user-page-wrapper {
+  background-color: $light-opacity;
+  @include set-size(100%, 100%);
   display: grid;
   grid-template-rows: 20% 80%;
   grid-template-areas:
     "header"
     "main";
-  background-color: $background-color;
-  font-family: $primary-font;
-  color: $primary-font-color;
 }
 
 .header {
   grid-area: header;
   @include flex-column;
   justify-content: center;
-  background-color: #ffd1bd;
   font-size: 1em;
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;
-  opacity: 80%;
 }
 
 .top-row {
@@ -46,10 +49,9 @@ body {
 
 .welcome {
   margin-top: 0;
-  // padding-bottom: 10%;
-  width: 100%;
-  height: 0;
+  @include set-size(100%, 0);
   text-align: center;
+  font-family: $secondary-font;
 }
 
 .main {
@@ -95,8 +97,7 @@ body {
 }
 
 .trip-cost {
-  background-color: #ffd1bd;
-  opacity: 70%;
+  background-color: rgba(255, 209, 189, 0.8);
   padding: 1.3%;
   border-radius: 5px;
 }
@@ -115,10 +116,9 @@ body {
   padding-left: 5%;
   width: 90%;
   margin: 5%;
-  background-color: $secondary-color;
+  background-color: $heavy-opacity;
   font-size: .7em;
   border-radius: 5px;
-  opacity: 80%;
 }
 
 .trip-list-items {
@@ -132,7 +132,7 @@ body {
   bottom: 10px;
   @include set-size(80%, 80%);
   border-radius: 5px;
-  border: 3D7668;
+  border: #3D7668;
   box-shadow: 1px 1px 4px 4px $accent-color;
 }
 
@@ -164,7 +164,7 @@ select {
 }
 
 .price {
-  font-size: 1em;
+  font-size: .8em;
   text-align: center;
 }
 

@@ -1,5 +1,14 @@
 let domUpdates = {
 
+  displayPasswordError(element) {
+    element.innerHTML += `<p class="error-message">Your username or password is incorrect. Please try again.<p>`
+  },
+
+  showUserView(loginPage, userPage) {
+    loginPage.classList.add("hidden");
+    userPage.classList.remove("hidden");
+  },
+
   greetTraveler(travelerName, element) {
     element.innerText = `Welcome, ${travelerName}`;
   },
@@ -42,18 +51,20 @@ let domUpdates = {
   },
 
   displayEstimatedPrice(element, quote) {
-    element.innerHTML = `Estimated trip cost: $ ${quote}`;
+    element.innerHTML = `Estimated trip cost (with 10% agent fee): $ ${quote}`;
   },
 
   displayBookingConfirmation(element) {
     element.innerText = `Thanks for booking. Your trip has been sent to an agent for approval.`
   },
 
-  displayPostError(element) {
-    element.innerText = `Oh no, something went wrong. Please try again.`
+  displayPostError(element, error) {
+    // element.innerText = `Oh no, something went wrong. Please try again.`
+    element.innerText = error;
   },
 
-  displayGetError(element) {
+  displayGetError(element, error) {
+    console.log(error);
     element.innerHTML += `<h3 class="error">Oh no, something went wrong. Please check your internet connection and reload the page.</h3>`
   }
 }

@@ -10,17 +10,22 @@ import Trip from './trip';
 dayjs().format();
 
 //GLOBAL VARS
-let date = dayjs("12/11/2019").format('MM/DD/YYYY');
+let date = dayjs("01/01/2020").format('MM/DD/YYYY');
 let tripStartDate;
 let tripEndDate;
 let traveler;
 let trips;
 let destinations;
-let userIdInput = 9;
+let userIdInput;;
 
 //QUERY SELECTOR VARS
+let loginPage = document.querySelector("#logInPage");
+let loginButton = document.querySelector("#loginButton");
 let dateDisplay = document.querySelector("#date");
 let username = document.querySelector("#username");
+let loginForm = document.querySelector("#logInForm");
+let password = document.querySelector("#password");
+let userPage = document.querySelector("#userPage");
 let greeting = document.querySelector("#greeting");
 let bookingButton = document.querySelector("#bookingButton");
 let bookingFormSection = document.querySelector("#bookingForm");
@@ -41,7 +46,7 @@ let requestQuoteButton = document.querySelector("#requestQuote");
 let overview = document.querySelector("#overview");
 
 //EVENT LISTENERS
-window.addEventListener("load", fetchAPIData);
+loginButton.addEventListener("click", getUserFromLogin);
 bookingButton.addEventListener("click", () => {
   domUpdates.showBookingForm(bookingFormSection, estimatedTripCost);
 });
@@ -71,7 +76,7 @@ function fetchAPIData() {
 
   Promise.all([travelerPromise, tripsPromise, destinationsPromise])
     .then(data => prepareDOM(data))
-    .catch(error => domUpdates.displayGetError(overview))
+    .catch(error => domUpdates.displayGetError(overview, error))
 }
 
 function requestNewBooking(newTrip) {
@@ -95,12 +100,14 @@ function requestNewBooking(newTrip) {
     .then(data => updatePendingTrips(newTrip))
     .then(data => domUpdates.resetBookingForm(bookingForm))
     .then(data => domUpdates.displayBookingConfirmation(estimatedTripCost))
-    .catch(error => domUpdates.displayPostError(estimatedTripCost));
+    .catch(error => domUpdates.displayPostError(estimatedTripCost, error));
 }; 
 
 function checkForError(response) {
   if (response.ok) {
     return response.json();
+  } else if (response.status.split()[0] === 4) {
+    throw new Error('There was an issue with your request. Please make sure all fields are filled out correctly.');
   } else {
     throw new Error('Something went wrong. Please try again.');
   }
@@ -132,6 +139,19 @@ const endDateSelection = datepicker(endDateInput, {
 });
 
 //FUNCTIONS
+
+function getUserFromLogin(e) {
+  e.preventDefault();
+  userIdInput = parseInt(username.value.replace(/\D/g,''));
+  if (password.value === "travel2020" && username.value.includes("traveler") &&userIdInput) {
+    fetchAPIData();
+    domUpdates.showUserView(loginPage, userPage);
+  } else {
+    domUpdates.displayPasswordError(loginForm);
+    console.log("loginProblem");
+  }
+}
+
 function prepareDOM([travelerData, tripData, destinationData]) {
   destinations = new DestinationRepository(destinationData.destinations);
   trips = new TripRepository(tripData.trips, destinations.destinations);

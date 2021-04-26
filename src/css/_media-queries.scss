@@ -1,4 +1,18 @@
 @media screen and (min-width: 650px) {
+
+  .login-label {
+    font-size: 2.3em;
+    margin-bottom: 3%;
+  }
+
+  .login-input {
+    @include set-size(60%, 80%)
+  }
+
+  .login-button {
+    margin-top: 0;
+  }
+
   .overview {
     flex-direction: row;
     align-items: flex-start;
@@ -34,6 +48,10 @@
 }
 
 @media screen and (min-width: 1000px) {
+
+  .login-button {
+    padding-top: 1%;
+  }
   .top-row {
     margin-top: 5%;
     margin-bottom: 0;
@@ -49,7 +67,6 @@
 
   .overview {
     font-size: 2em;
-    // margin-bottom: 10%;
   }
 
   .trips {
@@ -59,7 +76,6 @@
   }
 
   .trip-list {
-    // @include set-size(100%, 90%);
     justify-content: flex-start;
     font-size: 1em;
     width: 100%;

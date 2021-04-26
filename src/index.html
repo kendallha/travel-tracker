@@ -4,12 +4,26 @@
     <title>Travel Tracker</title>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Questrial&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
     </style>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <img class="background" src="../images/portugal.jpg" alt="Background image of Portugese skyline">
+    <main id="logInPage" class="log-in-page">
+      <h1 class="logo">Travel Tracker</h1>
+      <section id="loginSection" class="log-in-section">
+        <form id="logInForm" class="log-in-form">
+          <label class="login-label" for="username">Username</label>
+          <input class="login-input" id="username" type="text" required aria-required="true"/>
+          <label class="login-label" for="password">Password</label>
+          <input class="login-input" id="password" type="text" required aria-required="true"/>
+          <input id="loginButton" class="login-button" type="submit" value="Log In" required aria-required="true"/> 
+        </form>
+      </section>
+    </main>
+    <div id="userPage" class="user-page-wrapper hidden">
     <header class="header">
       <div class="top-row">
         <h2 id="date">Date</h2>
@@ -67,6 +81,7 @@
         </article>
       </section>
     </main>
+  </div>
     <main id="agentView" class="hidden">
       <h3>Total Revenue This Year</h3>
       <article>
