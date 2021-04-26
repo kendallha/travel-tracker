@@ -1,7 +1,7 @@
 let domUpdates = {
 
   displayPasswordError(element) {
-    element.innerHTML += `<p>Your username or password is incorrect. Please try again.<p>`
+    element.innerHTML += `<p class="error-message">Your username or password is incorrect. Please try again.<p>`
   },
 
   showUserView(loginPage, userPage) {
@@ -51,15 +51,16 @@ let domUpdates = {
   },
 
   displayEstimatedPrice(element, quote) {
-    element.innerHTML = `Estimated trip cost: $ ${quote}`;
+    element.innerHTML = `Estimated trip cost (with 10% agent fee): $ ${quote}`;
   },
 
   displayBookingConfirmation(element) {
     element.innerText = `Thanks for booking. Your trip has been sent to an agent for approval.`
   },
 
-  displayPostError(element) {
-    element.innerText = `Oh no, something went wrong. Please try again.`
+  displayPostError(element, error) {
+    // element.innerText = `Oh no, something went wrong. Please try again.`
+    element.innerText = error;
   },
 
   displayGetError(element, error) {
