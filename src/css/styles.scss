@@ -2,9 +2,10 @@
 @import '_variables.scss';
 @import '_mixins.scss';
 @import '~js-datepicker/src/datepicker';
+@import '_logInPage.scss';
 
 html, body {
-  @include set-size(100%, 100%)
+  @include set-size(100%, 100%);
 }
 
 .background {
@@ -15,14 +16,18 @@ html, body {
 }
 
 body {
+  background-color: $background-color;
+  font-family: $primary-font;
+  color: $primary-font-color;
+}
+
+.user-page-wrapper {
+  @include set-size(100%, 100%);
   display: grid;
   grid-template-rows: 20% 80%;
   grid-template-areas:
     "header"
     "main";
-  background-color: $background-color;
-  font-family: $primary-font;
-  color: $primary-font-color;
 }
 
 .header {
