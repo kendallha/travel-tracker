@@ -1,5 +1,14 @@
 let domUpdates = {
 
+  displayPasswordError(element) {
+    element.innerHTML += `<p>Your username or password is incorrect. Please try again.<p>`
+  },
+
+  showUserView(loginPage, userPage) {
+    loginPage.classList.add("hidden");
+    userPage.classList.remove("hidden");
+  },
+
   greetTraveler(travelerName, element) {
     element.innerText = `Welcome, ${travelerName}`;
   },
@@ -53,7 +62,8 @@ let domUpdates = {
     element.innerText = `Oh no, something went wrong. Please try again.`
   },
 
-  displayGetError(element) {
+  displayGetError(element, error) {
+    console.log(error);
     element.innerHTML += `<h3 class="error">Oh no, something went wrong. Please check your internet connection and reload the page.</h3>`
   }
 }

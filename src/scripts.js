@@ -16,11 +16,16 @@ let tripEndDate;
 let traveler;
 let trips;
 let destinations;
-let userIdInput = 9;
+let userIdInput;;
 
 //QUERY SELECTOR VARS
+let loginPage = document.querySelector("#logInPage");
+let loginButton = document.querySelector("#loginButton");
 let dateDisplay = document.querySelector("#date");
 let username = document.querySelector("#username");
+let loginSection = document.querySelector("#loginSection");
+let password = document.querySelector("#password");
+let userPage = document.querySelector("#userPage");
 let greeting = document.querySelector("#greeting");
 let bookingButton = document.querySelector("#bookingButton");
 let bookingFormSection = document.querySelector("#bookingForm");
@@ -41,7 +46,8 @@ let requestQuoteButton = document.querySelector("#requestQuote");
 let overview = document.querySelector("#overview");
 
 //EVENT LISTENERS
-window.addEventListener("load", fetchAPIData);
+loginButton.addEventListener("click", getUserFromLogin);
+
 bookingButton.addEventListener("click", () => {
   domUpdates.showBookingForm(bookingFormSection, estimatedTripCost);
 });
@@ -70,8 +76,9 @@ function fetchAPIData() {
     .then(data => data)
 
   Promise.all([travelerPromise, tripsPromise, destinationsPromise])
+    .then(data => console.log(data))
     .then(data => prepareDOM(data))
-    .catch(error => domUpdates.displayGetError(overview))
+    .catch(error => domUpdates.displayGetError(overview, error))
 }
 
 function requestNewBooking(newTrip) {
@@ -132,6 +139,18 @@ const endDateSelection = datepicker(endDateInput, {
 });
 
 //FUNCTIONS
+
+function getUserFromLogin(e) {
+  e.preventDefault();
+  userIdInput = parseInt(username.value.replace(/\D/g,''));
+  if (password.value === "travel2020" && userIdInput) {
+    fetchAPIData();
+    domUpdates.showUserView(loginPage, userPage);
+  } else {
+    domUpdates.displayPasswordError(loginSection)
+  }
+}
+
 function prepareDOM([travelerData, tripData, destinationData]) {
   destinations = new DestinationRepository(destinationData.destinations);
   trips = new TripRepository(tripData.trips, destinations.destinations);
