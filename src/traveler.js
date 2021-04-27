@@ -10,7 +10,7 @@ class Traveler {
   }
 
   getTotalCostThisYear(date) {
-    const tripsThisYear =  this.trips.filter(trip => dayjs(trip.date).isSame(dayjs(date), 'year'));
+    const tripsThisYear =  this.trips.filter(trip => dayjs(trip.date).isSame(dayjs(date), 'year') && trip.status === "approved");
     return Math.round(tripsThisYear.reduce((acc, trip) => acc + trip.getTripCost(),0));
   }
   }
