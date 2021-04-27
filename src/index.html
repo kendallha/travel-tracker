@@ -25,63 +25,63 @@
       </section>
     </main>
     <div id="userPage" class="user-page-wrapper hidden">
-    <header class="header">
-      <div class="top-row">
-        <h2 id="date">Date</h2>
-        <i class="fas fa-user fa-2x"></i>
-      </div>
-      <h1 id="greeting" class="welcome">Welcome</h1>
-    </header>
-    <main id="user-view" class="main">
-      <section id="overview" class="overview">
-        <div>
-        <button id="bookingButton" class="booking-button" aria-label="Open booking form">Book A Trip</button>
-      </div>
-        <article id="bookingForm" class="form-section hidden" aria-expanded="false">
-          <i id="exitButton" class="fas fa-times fa-2x" aria-label="Close booking form"></i>
-          <h1 class="form-heading">Book A New Trip</h1>
-          <form id="bookTripForm" class="trip-form">
-            <label for="destination">Choose a destination</label>
-            <select id="destination" name="destination" required aria-required="true">
-            </select>
-            <label for="startDate">Start Date</label>
-            <input type="text" placeholder="Click to select" id="startDate" required aria-required="true" />
-            <label for="endDate">Return Date</label>
-            <input type="text" placeholder="Click to select" id="endDate" required aria-required="true"/>
-            <label for="numTravelers">Number of Travelers</label>
-            <input type="number" id="numTravelers" min="1" value="1" required aria-required="true"/>
-            <div class="button-wrapper">
-              <input id="requestQuote" class="submit" type="button" value="Get a Quote"/>
-              <input id="submitButton" class="submit" type="submit" value="Request Booking"/>
+      <header class="header">
+        <div class="top-row">
+          <h2 id="date">Date</h2>
+          <i class="fas fa-user fa-2x"></i>
+        </div>
+        <h1 id="greeting" class="welcome">Welcome</h1>
+      </header>
+      <main id="user-view" class="main">
+        <section id="overview" class="overview">
+          <div>
+            <button id="bookingButton" class="booking-button" aria-label="Open booking form">Book A Trip</button>
           </div>
-          </form>
-          <h3 id="price" class="price">Estimated Trip Cost (including 10% agent fee):</h3>
-        </article>
-        <p class="trip-cost" id="tripCostTotal"></p>
-      </section>
-      <section class="trips">
-        <article class="trip-list">
-          <h1>Current Trips</h1>
-          <ul id="currentTrips" class="trip-list-items">
-          </ul>
-        </article>
-        <article class="trip-list">
-          <h1>Upcoming Trips</h1>
-          <ul id="upcomingTrips" class="trip-list-items">
-          </ul>
-        </article>
-        <article class="trip-list">
-          <h1>Trips Pending Approval</h1>
-          <ul id="pendingTrips" class="trip-list-items">
-          </ul>
-        </article>
-        <article class="trip-list">
-          <h1>Past Trips</h1>
-          <ul id="pastTrips" class="trip-list-items">
-          </ul>
-        </article>
-      </section>
-    </main>
-  </div>
+          <article id="bookingForm" class="form-section hidden" aria-expanded="false">
+            <i id="exitButton" class="fas fa-times fa-2x" aria-label="Close booking form"></i>
+            <h1 class="form-heading">Book A New Trip</h1>
+            <form id="bookTripForm" class="trip-form">
+              <label for="destination">Choose a destination</label>
+              <select id="destination" name="destination" required aria-required="true">
+              </select>
+              <label for="startDate">Start Date</label>
+              <input type="text" placeholder="Click to select" id="startDate" required aria-required="true" />
+              <label for="endDate">Return Date</label>
+              <input type="text" placeholder="Click to select" id="endDate" required aria-required="true"/>
+              <label for="numTravelers">Number of Travelers</label>
+              <input type="number" id="numTravelers" min="1" value="1" required aria-required="true"/>
+              <div class="button-wrapper">
+                <input id="requestQuote" class="submit" type="button" value="Get a Quote"/>
+                <input id="submitButton" class="submit" type="submit" value="Request Booking"/>
+              </div>
+            </form>
+            <h3 id="price" class="price">Estimated Trip Cost (including 10% agent fee):</h3>
+          </article>
+          <p class="trip-cost" id="tripCostTotal"></p>
+        </section>
+        <section class="trips">
+          <article class="trip-list">
+            <h1>Current Trips</h1>
+            <ul id="currentTrips" class="trip-list-items">
+            </ul>
+          </article>
+          <article class="trip-list">
+            <h1>Upcoming Trips</h1>
+            <ul id="upcomingTrips" class="trip-list-items">
+            </ul>
+          </article>
+          <article class="trip-list">
+            <h1>Trips Pending Approval</h1>
+            <ul id="pendingTrips" class="trip-list-items">
+            </ul>
+          </article>
+          <article class="trip-list">
+            <h1>Past Trips</h1>
+            <ul id="pastTrips" class="trip-list-items">
+            </ul>
+          </article>
+        </section>
+      </main>
+    </div>
   </body>
 </html>

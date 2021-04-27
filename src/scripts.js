@@ -8,7 +8,6 @@ import dayjs from 'dayjs';
 import Trip from './trip';
 dayjs().format();
 
-//GLOBAL VARS
 let date = dayjs("01/01/2020").format('MM/DD/YYYY');
 let tripStartDate;
 let tripEndDate;
@@ -16,8 +15,6 @@ let traveler;
 let trips;
 let destinations;
 let userIdInput;
-
-//QUERY SELECTOR VARS
 let loginPage = document.querySelector("#logInPage");
 let loginButton = document.querySelector("#loginButton");
 let dateDisplay = document.querySelector("#date");
@@ -44,7 +41,6 @@ let estimatedTripCost = document.querySelector("#price");
 let requestQuoteButton = document.querySelector("#requestQuote");
 let overview = document.querySelector("#overview");
 
-//EVENT LISTENERS
 loginButton.addEventListener("click", (e) => {
   getUserFromLogin(e);
 });
@@ -61,7 +57,6 @@ requestQuoteButton.addEventListener("click", () => {
   getTripPriceQuote(createNewTripFromBookingForm(traveler, destinations, trips));
 })
 
-//NETWORK REQUESTS
 function fetchAPIData() {
   const travelerPromise = fetch(`http://localhost:3001/api/v1/travelers/${userIdInput}`)
     .then(response => checkForError(response))
@@ -114,7 +109,6 @@ function checkForError(response) {
   }
 }
 
-//DATEPICKER HANDLING
 const dateSplitter = date => {
   let splitDate = date.split("/");
   let joinDate = splitDate.join(",");
@@ -138,8 +132,6 @@ const endDateSelection = datepicker(endDateInput, {
     getTripDuration();
   }
 });
-
-//FUNCTIONS
 
 function getUserFromLogin(e) {
   e.preventDefault();
