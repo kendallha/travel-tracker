@@ -171,9 +171,9 @@ select {
 .error {
   position: absolute;
   z-index: 9;
-  border: solid 1px red;
+  border: solid 5px red;
   color: black;
-  background-color: #fae3d1;
+  background-color: $heavy-opacity;
   width: 80%;
   padding: 3%;
 }

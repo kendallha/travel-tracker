@@ -49,11 +49,6 @@ let overview = document.querySelector("#overview");
 loginButton.addEventListener("click", (e) => {
   getUserFromLogin(e);
 });
-// loginForm.addEventListener("submit", (e) => {
-//   console.log("submit")
-//   console.log(username.value);
-//   getUserFromLogin(e);
-// });
 bookingButton.addEventListener("click", () => {
   domUpdates.showBookingForm(bookingFormSection, estimatedTripCost);
 });
