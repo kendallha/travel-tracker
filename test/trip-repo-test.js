@@ -5,7 +5,6 @@ import Trip from '../src/trip';
 import TripRepository from '../src/trip-repo';
 import tripData from '../data/trip-test-data';
 import DestinationRepo from '../src/destination-repo';
-import Destination from '../src/destination';
 import destinationData from '../data/destination-test-data';
 
 describe('TripRepository', function() {
@@ -46,13 +45,14 @@ describe('TripRepository', function() {
         "flightCostPerPerson": 780,
         "image": "https://images.unsplash.com/photo-1560089168-6516081f5bf1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
         "alt": "city with boats on the water during the day time"
-        },
+      },
       "travelers": 5,
       "date": "2021/10/04",
       "duration": 18,
       "status": "pending",
       "suggestedActivities": []
-    },{
+    }, 
+    {
       "id": 3,
       "userID": 3,
       "destination": {
@@ -62,7 +62,7 @@ describe('TripRepository', function() {
         "flightCostPerPerson": 950,
         "image": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
         "alt": "opera house and city buildings on the water with boats"
-        },
+      },
       "travelers": 4,
       "date": "2020/05/22",
       "duration": 17,
@@ -82,7 +82,7 @@ describe('TripRepository', function() {
         "flightCostPerPerson": 350,
         "image": "https://images.unsplash.com/photo-1558029697-a7ed1a4b94c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
         "alt": "boats at a dock during the day time"
-        },
+      },
       "travelers": 4,
       "date": "2021/10/22",
       "duration": 17,
@@ -99,7 +99,7 @@ describe('TripRepository', function() {
         "flightCostPerPerson": 780,
         "image": "https://images.unsplash.com/photo-1560089168-6516081f5bf1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
         "alt": "city with boats on the water during the day time"
-        },
+      },
       "travelers": 4,
       "date": "2021/05/22",
       "duration": 17,
@@ -119,7 +119,7 @@ describe('TripRepository', function() {
         "flightCostPerPerson": 950,
         "image": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
         "alt": "opera house and city buildings on the water with boats"
-        },
+      },
       "travelers": 2,
       "date": "2020/02/25",
       "duration": 10,
@@ -136,13 +136,15 @@ describe('TripRepository', function() {
         "flightCostPerPerson": 350,
         "image": "https://images.unsplash.com/photo-1558029697-a7ed1a4b94c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
         "alt": "boats at a dock during the day time"
-        },
+      },
       "travelers": 3,
       "date": "2020/04/30",
       "duration": 18,
       "status": "approved",
       "suggestedActivities": []
     }])
+
+    expect(trips.getPastTripsByUser(3, "2020/01/01")).to.deep.equal([])
   });
 
   it('should be able to get a user\'s current trips', function() {
@@ -156,13 +158,15 @@ describe('TripRepository', function() {
         "flightCostPerPerson": 950,
         "image": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
         "alt": "opera house and city buildings on the water with boats"
-        },
+      },
       "travelers": 1,
       "date": "2019/09/16",
       "duration": 8,
       "status": "approved",
       "suggestedActivities": ["snorkeling", "hot springs", "museums"]
     }])
+
+    expect(trips.getCurrentTripsByUser(35, "2019/09/20")).to.deep.equal([])
   });
 
   it('should be able to get all current trips', function() {
@@ -176,13 +180,15 @@ describe('TripRepository', function() {
         "flightCostPerPerson": 950,
         "image": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
         "alt": "opera house and city buildings on the water with boats"
-        },
+      },
       "travelers": 1,
       "date": "2019/09/16",
       "duration": 8,
       "status": "approved",
       "suggestedActivities": ["snorkeling", "hot springs", "museums"]
     }])
+
+    expect(trips.getAllCurrentTrips("2017/09/20")).to.deep.equal([])
   });
 
   it('should be able to get all trips for a given user', function() {
@@ -196,7 +202,7 @@ describe('TripRepository', function() {
         "flightCostPerPerson": 950,
         "image": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
         "alt": "opera house and city buildings on the water with boats"
-        },
+      },
       "travelers": 1,
       "date": "2019/09/16",
       "duration": 8,

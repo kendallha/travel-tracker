@@ -5,7 +5,6 @@ import DestinationRepository from './destination-repo';
 import TripRepository from './trip-repo';
 import datepicker from 'js-datepicker';
 import dayjs from 'dayjs';
-import Destination from './destination';
 import Trip from './trip';
 dayjs().format();
 
@@ -16,7 +15,7 @@ let tripEndDate;
 let traveler;
 let trips;
 let destinations;
-let userIdInput;;
+let userIdInput;
 
 //QUERY SELECTOR VARS
 let loginPage = document.querySelector("#logInPage");
@@ -29,7 +28,7 @@ let userPage = document.querySelector("#userPage");
 let greeting = document.querySelector("#greeting");
 let bookingButton = document.querySelector("#bookingButton");
 let bookingFormSection = document.querySelector("#bookingForm");
-let bookingForm = document.querySelector("#form");
+let bookingForm = document.querySelector("#bookTripForm");
 let exitButton = document.querySelector("#exitButton");
 let pendingTripsList = document.querySelector("#pendingTrips");
 let pastTripsList = document.querySelector("#pastTrips");
@@ -46,7 +45,9 @@ let requestQuoteButton = document.querySelector("#requestQuote");
 let overview = document.querySelector("#overview");
 
 //EVENT LISTENERS
-loginButton.addEventListener("click", getUserFromLogin);
+loginButton.addEventListener("click", (e) => {
+  getUserFromLogin(e);
+});
 bookingButton.addEventListener("click", () => {
   domUpdates.showBookingForm(bookingFormSection, estimatedTripCost);
 });
@@ -76,7 +77,7 @@ function fetchAPIData() {
 
   Promise.all([travelerPromise, tripsPromise, destinationsPromise])
     .then(data => prepareDOM(data))
-    .catch(error => domUpdates.displayGetError(overview, error))
+    .catch(error => domUpdates.displayGetError(overview))
 }
 
 function requestNewBooking(newTrip) {
@@ -94,24 +95,24 @@ function requestNewBooking(newTrip) {
     }),
     headers: {
       "Content-Type": "application/json"
-      }  
+    }  
   })
     .then(response => checkForError(response))
     .then(data => updatePendingTrips(newTrip))
     .then(data => domUpdates.resetBookingForm(bookingForm))
     .then(data => domUpdates.displayBookingConfirmation(estimatedTripCost))
-    .catch(error => domUpdates.displayPostError(estimatedTripCost, error));
-}; 
+    .catch(error => domUpdates.displayPostError(estimatedTripCost, error))
+}
 
 function checkForError(response) {
   if (response.ok) {
     return response.json();
-  } else if (response.status.split()[0] === 4) {
+  } else if (response.status.toString.split("")[0] === 4) {
     throw new Error('There was an issue with your request. Please make sure all fields are filled out correctly.');
   } else {
     throw new Error('Something went wrong. Please try again.');
   }
-};
+}
 
 //DATEPICKER HANDLING
 const dateSplitter = date => {
@@ -147,28 +148,22 @@ function getUserFromLogin(e) {
     fetchAPIData();
     domUpdates.showUserView(loginPage, userPage);
   } else {
-    domUpdates.displayPasswordError(loginForm);
-    console.log("loginProblem");
+    domUpdates.displayPasswordError();
   }
+  loginForm.reset();
 }
 
 function prepareDOM([travelerData, tripData, destinationData]) {
   destinations = new DestinationRepository(destinationData.destinations);
   trips = new TripRepository(tripData.trips, destinations.destinations);
-  populateDOM(travelerData);
+  domUpdates.displayDate(date, dateDisplay);
+  getUserView(travelerData);
 }
 
 function getNewTraveler(travelerInfo, tripRepository) {
   traveler = new Traveler(travelerInfo, tripRepository);
   const firstName = traveler.name.split(" ")[0];
   domUpdates.greetTraveler(firstName, greeting);
-}
-
-function populateDOM(travelerData) {
-  domUpdates.displayDate(date, dateDisplay);
-  //if statement using login
-  getUserView(travelerData);
-  // else statement with alternative agent page view
 }
 
 function getUserView(travelerData) {
@@ -216,7 +211,7 @@ function getTripSpending() {
 }
 
 function populateDestinationOptions() {
-  const alphabeticalDestinations = destinations.destinations.sort((a,b) => {
+  const alphabeticalDestinations = destinations.destinations.sort((a, b) => {
     let destinationA = a.destination.toLowerCase();
     let destinationB = b.destination.toLowerCase();
     if (destinationA < destinationB) {
@@ -244,7 +239,7 @@ function createNewTripFromBookingForm(traveler, destinations, trips) {
     duration: getTripDuration(),
     status: "pending",
     suggestedActivities: []
-    }
+  }
   return new Trip(newTripInput, destinations.destinations);
 }
 

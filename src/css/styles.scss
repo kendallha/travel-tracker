@@ -1,4 +1,4 @@
-@import 'normalize.css';
+@import '_normalize.scss';
 @import '_variables.scss';
 @import '_mixins.scss';
 @import '~js-datepicker/src/datepicker';
@@ -171,9 +171,9 @@ select {
 .error {
   position: absolute;
   z-index: 9;
-  border: solid 1px red;
+  border: solid 5px red;
   color: black;
-  background-color: #fae3d1;
+  background-color: $heavy-opacity;
   width: 80%;
   padding: 3%;
 }

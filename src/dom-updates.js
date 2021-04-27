@@ -1,7 +1,7 @@
 let domUpdates = {
 
-  displayPasswordError(element) {
-    element.innerHTML += `<p class="error-message">Your username or password is incorrect. Please try again.<p>`
+  displayPasswordError() {
+    document.querySelector("#loginError").classList.remove("hidden");
   },
 
   showUserView(loginPage, userPage) {
@@ -28,7 +28,7 @@ let domUpdates = {
   },
 
   displayCostThisYear(amount, element) {
-    element.innerText = `Trip Costs This Year: $ ${amount}`
+    element.innerText = `Trip Costs This Year: $ ${amount.toLocaleString()}`
   },
 
   showBookingForm(element, section) {
@@ -37,9 +37,9 @@ let domUpdates = {
     let expandedAttribute = element.getAttribute("aria-expanded");
     if (expandedAttribute === 'true') {
       element.setAttribute("aria-expanded", false);
-   } else {
+    } else {
       element.setAttribute("aria-expanded", true);
-   }
+    }
   },
 
   addDestinationOption(destination, element) {
@@ -51,7 +51,7 @@ let domUpdates = {
   },
 
   displayEstimatedPrice(element, quote) {
-    element.innerHTML = `Estimated trip cost (with 10% agent fee): $ ${quote}`;
+    element.innerHTML = `Estimated trip cost (with 10% agent fee): $ ${quote.toLocaleString()}`;
   },
 
   displayBookingConfirmation(element) {
@@ -59,12 +59,14 @@ let domUpdates = {
   },
 
   displayPostError(element, error) {
-    // element.innerText = `Oh no, something went wrong. Please try again.`
-    element.innerText = error;
+    if (error.message === 'There was an issue with your request. Please make sure all fields are filled out correctly.' || error.message === 'Something went wrong. Please try again.') {
+    element.innerText = error.message;
+    } else {
+     element.innerText = 'Something went wrong. Please try again.';
+    }
   },
 
-  displayGetError(element, error) {
-    console.log(error);
+  displayGetError(element) {
     element.innerHTML += `<h3 class="error">Oh no, something went wrong. Please check your internet connection and reload the page.</h3>`
   }
 }

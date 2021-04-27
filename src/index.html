@@ -18,8 +18,9 @@
           <label class="login-label" for="username">Username</label>
           <input class="login-input" id="username" type="text" required aria-required="true"/>
           <label class="login-label" for="password">Password</label>
-          <input class="login-input" id="password" type="text" required aria-required="true"/>
-          <input id="loginButton" class="login-button" type="submit" value="Log In" required aria-required="true"/> 
+          <input class="login-input" id="password" type="password" required aria-required="true"/>
+          <input id="loginButton" class="login-button" type="submit" value="Log In"/>
+          <p id="loginError" class="hidden">Your username or password is incorrect. Please try again.</p>
         </form>
       </section>
     </main>
@@ -39,7 +40,7 @@
         <article id="bookingForm" class="form-section hidden" aria-expanded="false">
           <i id="exitButton" class="fas fa-times fa-2x" aria-label="Close booking form"></i>
           <h1 class="form-heading">Book A New Trip</h1>
-          <form id="form" class="trip-form">
+          <form id="bookTripForm" class="trip-form">
             <label for="destination">Choose a destination</label>
             <select id="destination" name="destination" required aria-required="true">
             </select>
@@ -50,11 +51,11 @@
             <label for="numTravelers">Number of Travelers</label>
             <input type="number" id="numTravelers" min="1" value="1" required aria-required="true"/>
             <div class="button-wrapper">
-              <input id="requestQuote" class="submit" type="button" value="Get a Quote" required aria-required="true"/>
-              <input id="submitButton" class="submit" type="submit" value="Request Booking" required aria-required="true"/>
+              <input id="requestQuote" class="submit" type="button" value="Get a Quote"/>
+              <input id="submitButton" class="submit" type="submit" value="Request Booking"/>
           </div>
           </form>
-          <h3 id="price" class="price">Estimated Trip Cost:</h3>
+          <h3 id="price" class="price">Estimated Trip Cost (including 10% agent fee):</h3>
         </article>
         <p class="trip-cost" id="tripCostTotal"></p>
       </section>
@@ -82,19 +83,5 @@
       </section>
     </main>
   </div>
-    <main id="agentView" class="hidden">
-      <h3>Total Revenue This Year</h3>
-      <article>
-        <h1>Trips Pending Approval</h1>
-        <ul class="trip-list-items"></ul>
-      </article>
-      <article>
-        <h1>Travelers on Trips Today</h1>
-        <ul class="trip-list-items"></ul>
-      </article>
-    </main>
-    
-
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>

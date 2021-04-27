@@ -56,7 +56,7 @@ describe('Traveler', function() {
         "flightCostPerPerson": 950,
         "image": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
         "alt": "opera house and city buildings on the water with boats"
-        },
+      },
       "travelers": 4,
       "date": "2020/05/22",
       "duration": 17,
@@ -72,7 +72,7 @@ describe('Traveler', function() {
         "flightCostPerPerson": 350,
         "image": "https://images.unsplash.com/photo-1558029697-a7ed1a4b94c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
         "alt": "boats at a dock during the day time"
-        },
+      },
       "travelers": 4,
       "date": "2021/10/22",
       "duration": 17,
@@ -88,7 +88,7 @@ describe('Traveler', function() {
         "flightCostPerPerson": 780,
         "image": "https://images.unsplash.com/photo-1560089168-6516081f5bf1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
         "alt": "city with boats on the water during the day time"
-        },
+      },
       "travelers": 4,
       "date": "2021/05/22",
       "duration": 17,
@@ -97,7 +97,7 @@ describe('Traveler', function() {
     }])
   });
 
-  it('should be able to calculate the traveler\s trip costs this year', function() {
+  it('should be able to calculate the traveler\'s trip costs this year', function() {
     expect(traveler.getTotalCostThisYear()).to.equal(8058);
   });
 

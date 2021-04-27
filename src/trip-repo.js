@@ -29,7 +29,7 @@ class TripRepository {
     return this.trips.filter(trip => {
       const tripDate = dayjs(trip.date);
       const tripEndDate = tripDate.add(trip.duration, 'days');
-      return dayjs(date).isBetween(tripDate, tripEndDate, 'day','[]') && trip.userID === userID;
+      return dayjs(date).isBetween(tripDate, tripEndDate, 'day', '[]') && trip.userID === userID;
     })
   }
 
@@ -52,7 +52,7 @@ class TripRepository {
   getYearlyRevenue(date) {
     const tripsThisYear =  this.trips.filter(trip => dayjs(trip.date).isSame(dayjs(date), 'year') && trip.status === "approved");
 
-    return Math.round(tripsThisYear.reduce((acc, trip) => acc + trip.getTripRevenue(),0));
+    return Math.round(tripsThisYear.reduce((acc, trip) => acc + trip.getTripRevenue(), 0));
   }
 
 }
