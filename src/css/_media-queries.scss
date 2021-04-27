@@ -1,4 +1,5 @@
 @media screen and (min-width: 650px) {
+// LOGIN PAGE
 
   .login-label {
     font-size: 2.3em;
@@ -13,6 +14,8 @@
     margin-top: 0;
   }
 
+  // TOTAL TRIP SPENDING
+
   .overview {
     flex-direction: row;
     align-items: flex-start;
@@ -20,6 +23,8 @@
     padding-top: 2%;
     margin-bottom: 7%;
   }
+
+  // TRIP LIST SECTION
 
   .trips {
     @include set-size(100%, 100%);
@@ -49,9 +54,14 @@
 
 @media screen and (min-width: 1000px) {
 
+  // LOG IN PAGE
+  
   .login-button {
     padding-top: 1%;
   }
+
+  // USER PAGE HEADER
+
   .top-row {
     margin-top: 5%;
     margin-bottom: 0;
@@ -69,6 +79,8 @@
     font-size: 2em;
   }
 
+  // TRIP LIST SECTION
+
   .trips {
     grid-template-columns: repeat(4, 20%);
     grid-template-rows: none;
@@ -81,6 +93,8 @@
     width: 100%;
     
   }
+
+  // BOOKING FORM
 
   .form-heading {
     margin-top: -4%;

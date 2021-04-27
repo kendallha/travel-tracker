@@ -20,6 +20,8 @@ body {
   color: $primary-font-color;
 }
 
+// MAIN USER PAGE
+
 .user-page-wrapper {
   background-color: $light-opacity;
   @include set-size(100%, 100%);
@@ -29,6 +31,8 @@ body {
     "header"
     "main";
 }
+
+//TOP OF USER PAGE (WELCOME)
 
 .header {
   grid-area: header;
@@ -63,6 +67,8 @@ body {
     "trips";
 }
 
+//TRIP SPENDING AND BOOKING BUTTON
+
 .overview {
   grid-area: overview;
   @include flex-column;
@@ -96,6 +102,8 @@ body {
   white-space: normal;
 }
 
+// TRIP LIST SECTION
+
 .trip-cost {
   background-color: rgba(255, 209, 189, 0.8);
   padding: 1.3%;
@@ -124,6 +132,8 @@ body {
 .trip-list-items {
   font-size: 1.4em;
 }
+
+// BOOKING FORM POP-OUT
 
 .form-section {
   z-index: 9; 
