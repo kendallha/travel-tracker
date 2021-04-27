@@ -14,8 +14,8 @@ This is the final project for MOD 2 of Turing School of Software & Design. For t
 - Creating a fully responsive layout across mobile and desktop devices
 - Using ARIA and semantic HTML to improve site accessibility
 
-## [Github Repo](https://github.com/kendallha/travel-tracker)
-## [My Github]((https://github.com/kendallha))
+### [Github Repo](https://github.com/kendallha/travel-tracker)
+### [My Github](https://github.com/kendallha)
 
 ## Setup Instructions
 
@@ -44,6 +44,9 @@ This is the final project for MOD 2 of Turing School of Software & Design. For t
 ![GIF showing booking a trip](https://media.giphy.com/media/Phd6lZ76FIiDpZ5zkG/giphy.gif)
 
 # User Overview Page Responsive Layout
+<img src="https://user-images.githubusercontent.com/25498241/116295319-ce46d100-a74d-11eb-8a9b-ff0841b3ada4.png" width="500">
+<img src="https://user-images.githubusercontent.com/25498241/116295341-d4d54880-a74d-11eb-8926-0dee16f06ce6.png" width="350">
+<img src="https://user-images.githubusercontent.com/25498241/116295357-d999fc80-a74d-11eb-933e-034c3db75529.png" height="300">
 
 
 # Technologies Used
