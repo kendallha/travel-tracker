@@ -1,7 +1,7 @@
 let domUpdates = {
 
-  displayPasswordError(element) {
-    element.innerHTML += `<p class="error-message">Your username or password is incorrect. Please try again.<p>`
+  displayPasswordError() {
+    document.querySelector("#loginError").classList.remove("hidden");
   },
 
   showUserView(loginPage, userPage) {

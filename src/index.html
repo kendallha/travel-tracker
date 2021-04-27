@@ -19,7 +19,8 @@
           <input class="login-input" id="username" type="text" required aria-required="true"/>
           <label class="login-label" for="password">Password</label>
           <input class="login-input" id="password" type="text" required aria-required="true"/>
-          <input id="loginButton" class="login-button" type="submit" value="Log In" required aria-required="true"/> 
+          <input id="loginButton" class="login-button" type="submit" value="submit"/>
+          <p id="loginError" class="hidden">Your username or password is incorrect. Please try again.</p>
         </form>
       </section>
     </main>
@@ -39,7 +40,7 @@
         <article id="bookingForm" class="form-section hidden" aria-expanded="false">
           <i id="exitButton" class="fas fa-times fa-2x" aria-label="Close booking form"></i>
           <h1 class="form-heading">Book A New Trip</h1>
-          <form id="form" class="trip-form">
+          <form id="bookTripForm" class="trip-form">
             <label for="destination">Choose a destination</label>
             <select id="destination" name="destination" required aria-required="true">
             </select>
@@ -82,7 +83,7 @@
       </section>
     </main>
   </div>
-    <main id="agentView" class="hidden">
+    <!-- <main id="agentView" class="hidden">
       <h3>Total Revenue This Year</h3>
       <article>
         <h1>Trips Pending Approval</h1>
@@ -91,7 +92,7 @@
       <article>
         <h1>Travelers on Trips Today</h1>
         <ul class="trip-list-items"></ul>
-      </article>
+      </article> -->
     </main>
     
 

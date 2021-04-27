@@ -29,7 +29,7 @@ let userPage = document.querySelector("#userPage");
 let greeting = document.querySelector("#greeting");
 let bookingButton = document.querySelector("#bookingButton");
 let bookingFormSection = document.querySelector("#bookingForm");
-let bookingForm = document.querySelector("#form");
+let bookingForm = document.querySelector("#bookTripForm");
 let exitButton = document.querySelector("#exitButton");
 let pendingTripsList = document.querySelector("#pendingTrips");
 let pastTripsList = document.querySelector("#pastTrips");
@@ -46,7 +46,14 @@ let requestQuoteButton = document.querySelector("#requestQuote");
 let overview = document.querySelector("#overview");
 
 //EVENT LISTENERS
-loginButton.addEventListener("click", getUserFromLogin);
+loginButton.addEventListener("click", (e) => {
+  getUserFromLogin(e);
+});
+// loginForm.addEventListener("submit", (e) => {
+//   console.log("submit")
+//   console.log(username.value);
+//   getUserFromLogin(e);
+// });
 bookingButton.addEventListener("click", () => {
   domUpdates.showBookingForm(bookingFormSection, estimatedTripCost);
 });
@@ -106,7 +113,7 @@ function requestNewBooking(newTrip) {
 function checkForError(response) {
   if (response.ok) {
     return response.json();
-  } else if (response.status.split()[0] === 4) {
+  } else if (response.status.toString.split("")[0] === 4) {
     throw new Error('There was an issue with your request. Please make sure all fields are filled out correctly.');
   } else {
     throw new Error('Something went wrong. Please try again.');
@@ -147,28 +154,29 @@ function getUserFromLogin(e) {
     fetchAPIData();
     domUpdates.showUserView(loginPage, userPage);
   } else {
-    domUpdates.displayPasswordError(loginForm);
-    console.log("loginProblem");
+    // domUpdates.displayPasswordError(e, loginForm);
+    getLoginError(e);
   }
+  loginForm.reset();
+}
+
+function getLoginError(e) {
+  // e.preventDefault;
+  domUpdates.displayPasswordError();
+  console.log("ugh");
 }
 
 function prepareDOM([travelerData, tripData, destinationData]) {
   destinations = new DestinationRepository(destinationData.destinations);
   trips = new TripRepository(tripData.trips, destinations.destinations);
-  populateDOM(travelerData);
+  domUpdates.displayDate(date, dateDisplay);
+  getUserView(travelerData);
 }
 
 function getNewTraveler(travelerInfo, tripRepository) {
   traveler = new Traveler(travelerInfo, tripRepository);
   const firstName = traveler.name.split(" ")[0];
   domUpdates.greetTraveler(firstName, greeting);
-}
-
-function populateDOM(travelerData) {
-  domUpdates.displayDate(date, dateDisplay);
-  //if statement using login
-  getUserView(travelerData);
-  // else statement with alternative agent page view
 }
 
 function getUserView(travelerData) {
