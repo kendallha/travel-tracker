@@ -154,16 +154,9 @@ function getUserFromLogin(e) {
     fetchAPIData();
     domUpdates.showUserView(loginPage, userPage);
   } else {
-    // domUpdates.displayPasswordError(e, loginForm);
-    getLoginError(e);
+    domUpdates.displayPasswordError();
   }
   loginForm.reset();
-}
-
-function getLoginError(e) {
-  // e.preventDefault;
-  domUpdates.displayPasswordError();
-  console.log("ugh");
 }
 
 function prepareDOM([travelerData, tripData, destinationData]) {

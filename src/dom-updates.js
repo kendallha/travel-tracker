@@ -59,12 +59,14 @@ let domUpdates = {
   },
 
   displayPostError(element, error) {
-    // element.innerText = `Oh no, something went wrong. Please try again.`
-    element.innerText = error;
+   if (error.message === 'There was an issue with your request. Please make sure all fields are filled out correctly.' || error.message === 'Something went wrong. Please try again.') {
+    element.innerText = error.message;
+   } else {
+     element.innerText = 'Something went wrong. Please try again.';
+   }
   },
 
   displayGetError(element, error) {
-    console.log(error);
     element.innerHTML += `<h3 class="error">Oh no, something went wrong. Please check your internet connection and reload the page.</h3>`
   }
 }
