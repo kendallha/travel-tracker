@@ -143,6 +143,8 @@ describe('TripRepository', function() {
       "status": "approved",
       "suggestedActivities": []
     }])
+
+    expect(trips.getPastTripsByUser(3, "2020/01/01")).to.deep.equal([])
   });
 
   it('should be able to get a user\'s current trips', function() {
@@ -163,6 +165,8 @@ describe('TripRepository', function() {
       "status": "approved",
       "suggestedActivities": ["snorkeling", "hot springs", "museums"]
     }])
+
+    expect(trips.getCurrentTripsByUser(35, "2019/09/20")).to.deep.equal([])
   });
 
   it('should be able to get all current trips', function() {
@@ -183,6 +187,8 @@ describe('TripRepository', function() {
       "status": "approved",
       "suggestedActivities": ["snorkeling", "hot springs", "museums"]
     }])
+
+    expect(trips.getAllCurrentTrips("2017/09/20")).to.deep.equal([])
   });
 
   it('should be able to get all trips for a given user', function() {
