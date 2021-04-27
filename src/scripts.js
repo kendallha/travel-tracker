@@ -5,7 +5,6 @@ import DestinationRepository from './destination-repo';
 import TripRepository from './trip-repo';
 import datepicker from 'js-datepicker';
 import dayjs from 'dayjs';
-import Destination from './destination';
 import Trip from './trip';
 dayjs().format();
 
@@ -16,7 +15,7 @@ let tripEndDate;
 let traveler;
 let trips;
 let destinations;
-let userIdInput;;
+let userIdInput;
 
 //QUERY SELECTOR VARS
 let loginPage = document.querySelector("#logInPage");
@@ -78,7 +77,7 @@ function fetchAPIData() {
 
   Promise.all([travelerPromise, tripsPromise, destinationsPromise])
     .then(data => prepareDOM(data))
-    .catch(error => domUpdates.displayGetError(overview, error))
+    .catch(error => domUpdates.displayGetError(overview))
 }
 
 function requestNewBooking(newTrip) {
@@ -96,14 +95,14 @@ function requestNewBooking(newTrip) {
     }),
     headers: {
       "Content-Type": "application/json"
-      }  
+    }  
   })
     .then(response => checkForError(response))
     .then(data => updatePendingTrips(newTrip))
     .then(data => domUpdates.resetBookingForm(bookingForm))
     .then(data => domUpdates.displayBookingConfirmation(estimatedTripCost))
-    .catch(error => domUpdates.displayPostError(estimatedTripCost, error));
-}; 
+    .catch(error => domUpdates.displayPostError(estimatedTripCost, error))
+}
 
 function checkForError(response) {
   if (response.ok) {
@@ -113,7 +112,7 @@ function checkForError(response) {
   } else {
     throw new Error('Something went wrong. Please try again.');
   }
-};
+}
 
 //DATEPICKER HANDLING
 const dateSplitter = date => {
@@ -212,7 +211,7 @@ function getTripSpending() {
 }
 
 function populateDestinationOptions() {
-  const alphabeticalDestinations = destinations.destinations.sort((a,b) => {
+  const alphabeticalDestinations = destinations.destinations.sort((a, b) => {
     let destinationA = a.destination.toLowerCase();
     let destinationB = b.destination.toLowerCase();
     if (destinationA < destinationB) {
@@ -240,7 +239,7 @@ function createNewTripFromBookingForm(traveler, destinations, trips) {
     duration: getTripDuration(),
     status: "pending",
     suggestedActivities: []
-    }
+  }
   return new Trip(newTripInput, destinations.destinations);
 }
 

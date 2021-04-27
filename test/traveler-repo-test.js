@@ -11,7 +11,6 @@ import travelerData from '../data/traveler-test-data';
 
 describe('TravelerRepository', function() {
   let tripInfo;
-  let traveler;
   let trips;
   let travelerInfo = travelerData;
   let destinationInfo;
@@ -24,7 +23,6 @@ describe('TravelerRepository', function() {
     travelerInfo = travelerData.travelers;
     destinations = new DestinationRepo(destinationInfo.destinations);
     trips = new TripRepository(tripInfo.trips, destinations.destinations);
-    traveler = new Traveler(travelerInfo, trips);
     travelers = new TravelerRepository(travelerInfo, trips);
   });
 
@@ -43,7 +41,7 @@ describe('TravelerRepository', function() {
       "name": "Tiffy Grout",
       "travelerType": "thrill-seeker",
       "trips": []
-      }])
+    }])
   });
 
 
